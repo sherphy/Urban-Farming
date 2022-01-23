@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+//import { Button } from "react-bootstrap"; first commit removal
 import { useUserAuth } from "../util/userAuthContext";
+
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import {Grid,Paper,Avatar,TextField,Box} from "@material-ui/core/";
+import LockIcon from '@mui/icons-material/Lock';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,40 +28,24 @@ const Login = () => {
     }
   };
 
+  const paperStyle={padding:20 , height:'60vh', width:350, margin:"20px auto", backgroundColor:"#FFE5B4"}
+  const avatarStyle={backgroundColor:"#1bbd7e"}
+  const textfieldStyle={margin:"10px 0"}
+  const btnStyle={margin:"20px 0"} //first commit styling options
   return (
-    <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Login</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="email"
-              placeholder="Email address"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
-              Log In
-            </Button>
-          </div>
-        </Form>
-        <hr />
-      </div>
-      <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </div>
-    </>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+          <Paper elevation={10} style={paperStyle}>
+            <Grid align='center'>
+              <Avatar style={avatarStyle}><LockIcon/></Avatar>
+              <h2>Sign In</h2>
+            </Grid>
+            <Form onSubmit={handleSubmit}></Form> {/*don't know if correct to put this here*/}
+            <TextField label='email' placeholder='Enter email' fullWidth required style={textfieldStyle} onChange={(e) => setEmail(e.target.value)}/>
+            <TextField label='password' placeholder='Enter password' type='password' fullWidth required style={textfieldStyle} onChange={(e) => setPassword(e.target.value)}/>
+            <Button type='submit' color='primary' variant="contained" fullWidth style={btnStyle}>Sign In</Button>
+            <Typography>Don't have an account?<Link to="/signup">Sign up</Link></Typography>
+          </Paper>
+        </Box>
   );
 };
 
