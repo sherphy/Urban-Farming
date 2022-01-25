@@ -1,15 +1,19 @@
 //basic routing
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 //for pages
 import Login from "./pages/login"
 import Dashboard from "./pages/dashboard";
 import Guides from "./pages/guides";
 import Rewards from "./pages/rewards";
 import Signup from "./pages/signup";
-import Navbar from "./components/Layout/Navbar"; //for testing
 import { UserAuthContextProvider } from "./util/userAuthContext";
 //Background Image
 import Background from "./images/Background2.jpg";
+//Navbar
+import WithoutNav from "./components/Layout/WithoutNav";
+import WithNav from "./components/Layout/WithNav";
+
+import Notifications from "./components/Notifications"
 
 
 var backgroundStyle = {
@@ -29,13 +33,18 @@ function App() {
           <div className="container" style={backgroundStyle}>
             <UserAuthContextProvider>
               <Routes>
+              <Route element={<WithoutNav />}>
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
+              </Route>
+              <Route element={<WithNav />}>
+              
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/guides" element={<Guides />} />
                 <Route path="/rewards" element={<Rewards />} />
-                
-                <Route path="/navbartest" element={<Navbar />} /> {/*to delete after test*/}
+              </Route>
+        
+                <Route path="/notifications" element={<Notifications />} /> 
               </Routes>
             </UserAuthContextProvider>
           </div>
