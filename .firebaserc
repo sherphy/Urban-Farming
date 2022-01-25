@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "default": "eg4301-urban-farming"
+  }
+}

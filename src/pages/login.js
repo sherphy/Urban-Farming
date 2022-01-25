@@ -7,8 +7,6 @@ import { useUserAuth } from "../util/userAuthContext";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {Grid,Paper,Avatar,TextField,Box} from "@material-ui/core/";
-import LockIcon from '@mui/icons-material/Lock';
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
