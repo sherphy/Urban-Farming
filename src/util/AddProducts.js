@@ -1,6 +1,6 @@
 //hidden configuration page to add products to database
 import React, { useState } from 'react'
-import { storage, db } from '../util/firebase'
+import { storage, db } from './firebase'
 
 const AddProducts = () => {
 
