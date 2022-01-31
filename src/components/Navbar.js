@@ -27,14 +27,16 @@ export const Navbar = ({user}) => {
             <div className='rightside'>
 
                 {!user&&<>
-                    <div><Link className='navlink' to="signup">SIGN UP</Link></div>
-                    <div><Link className='navlink' to="login">LOGIN</Link></div>
+                    <div><Link className='navlink' to="/signup">SIGN UP</Link></div>
+                    <div><Link className='navlink' to="/">LOGIN</Link></div>
+                    <div><Link className='navlink' to="/rewards">REWARDS</Link></div>
+                    <div><Link className='navlink' to="/cart">CART</Link></div>
                 </>} 
 
                 {user&&<>
                     <div><Link className='navlink' to="/">{user}</Link></div>
                     <div className='cart-menu-btn'>
-                        <Link className='navlink' to="/cart">
+                        <Link className='navlink' to="/rewards">
                             <Icon icon={shoppingCart} size={20}/>
                         </Link>
                         {/* <span className='cart-indicator'>{totalQty}</span> */}

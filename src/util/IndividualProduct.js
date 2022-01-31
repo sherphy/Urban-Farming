@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const IndividualProduct = ({individualProduct, addToCart}) => {
+const IndividualProduct = ({individualProduct, addToCart}) => {
     const handleAddToCart=()=>{
         addToCart(individualProduct);
     }   
@@ -16,3 +16,5 @@ export const IndividualProduct = ({individualProduct, addToCart}) => {
         </div> 
     )
 }
+
+export default IndividualProduct;

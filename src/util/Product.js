@@ -1,5 +1,5 @@
 import React from 'react'
-import {IndividualProduct} from './IndividualProduct'
+import IndividualProduct from './IndividualProduct'
 
 const Products = ({products,addToCart}) => {
 

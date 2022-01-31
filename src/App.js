@@ -88,6 +88,7 @@ import Dashboard from './pages/dashboard'
 import Rewards from './pages/rewards'
 import Login from './pages/login'
 import Signup from './pages/signup'
+import Cart from './pages/cart'
 import "./index.css"
 // import AddProducts from './util/AddProducts'
 
@@ -100,6 +101,7 @@ export const App = () => {
           <Route exact path="/dashboard" element={<Dashboard/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/rewards" element={<Rewards/>} />
+          <Route path="/cart" element={<Cart/>} />
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
         </Routes>
       </Router>
