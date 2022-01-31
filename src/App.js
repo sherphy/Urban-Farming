@@ -10,6 +10,7 @@ import Guides from "./pages/guides";
 import Products from "./pages/rewards";
 import Signup from "./pages/signup";
 import Cart from "./pages/cart";
+import Cashout from "./pages/checkout";
 
 //might need to remove later to hide it from view
 // import AddProducts from "./components/AddProducts";
@@ -24,31 +25,31 @@ import './index.css'
 //https://www.youtube.com/watch?v=Law7wfdg_ls
 export class App extends Component {
 
-  //for auth
-//   state = {
-//     user: null,
-// }
+  state = {
+    user: null,
+  }
 
-// componentDidMount() {
+  componentDidMount() {
 
     // getting user info for navigation bar
-    //think can do something to this part to link them to different timelapses
-//     auth.onAuthStateChanged(user => {
-//         if (user) {
-//             db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot => {
-//                 this.setState({
-//                     user: snapshot.data()
-//                 })
-//             })
-//         }
-//         else {
-//             this.setState({
-//                 user: null
-//             })
-//         }
-//     })
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot => {
+          this.setState({
+            user: snapshot.data().Email,
+            points: snapshot.data().Points,
+            view: snapshot.data().Camera
+          })
+        })
+      }
+      else {
+        this.setState({
+          user: null
+        })
+      }
+    })
 
-// }
+  }
 
   render() {
     return (
@@ -60,10 +61,13 @@ export class App extends Component {
                 <Routes>
                   <Route exact path="/" element={<Login />} />
                   <Route exact path="/signup" element={<Signup />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/dashboard" element={<Dashboard user={this.state.user}/>} />
                   <Route path="/guides" element={<Guides />} />
                   <Route path="/rewards" element={<Products />} />
-                  <Route path="/cart" element={()=><Cart user={this.state.user}/>}/>
+                  {/* beware of migration from "component" to "element"
+                  and the syntax change https://reactrouter.com/docs/en/v6/faq */}
+                  <Route path="/cart" element={<Cart user={this.state.user}/>} />
+                  <Route path='/checkout' element={<Cashout user={this.state.user} />} />
                   {/* might need to remove later to hide it from view */}
                   {/* <Route path='/addproducts' element={<AddProducts />} /> */}
                 </Routes>

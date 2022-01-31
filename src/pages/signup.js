@@ -78,6 +78,9 @@ const Signup = (props) => {
         auth.createUserWithEmailAndPassword(email, password).then((cred) => {
             db.collection('SignedUpUsersData').doc(cred.user.uid).set({
                 Email: email,
+                //must find way to update points
+                Points: 0,
+                Camera: "unset"
                 // Password: password
             }).then(() => {
                 setEmail('');

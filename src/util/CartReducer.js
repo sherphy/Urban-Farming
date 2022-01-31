@@ -1,3 +1,5 @@
+//for state manipulation
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,21 +18,31 @@ export const CartReducer = (state, action) => {
 
         case 'ADD_TO_CART':
 
-            // const check = shoppingCart.find(product => product.ProductID === action.id);
-            // if (check) {
-            //     toast.info('this product is already in your cart', {
-            //         position: "top-right",
-            //         autoClose: 2000,
-            //         hideProgressBar: false,
-            //         closeOnClick: true,
-            //         pauseOnHover: false,
-            //         draggable: false,
-            //         progress: undefined,
-            //     });
-            //     return state;
-            // }
-            // else {
+            const check = shoppingCart.find(product => product.ProductID === action.id);
+            if (check) {
+                toast.info('this product is already in your cart', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+                return state;
+            }
+            else {
                 //SHOULD NOTIFY THEM THAT IT HAS BEEN ADDED
+                //keeps proc-ing twice now
+                // toast.success('This product has been added to your cart', {
+                //     position: "top-right",
+                //     autoClose: 2000,
+                //     hideProgressBar: false,
+                //     closeOnClick: true,
+                //     pauseOnHover: false,
+                //     draggable: false,
+                //     progress: undefined,
+                // })
                 product = action.product;
                 product['qty'] = 1;
                 product['TotalProductPrice'] = product.ProductPrice * product.qty;
@@ -39,8 +51,7 @@ export const CartReducer = (state, action) => {
                 return {
                     shoppingCart: [product, ...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
                 }
-            // }
-            // break;
+            }
 
         case 'INC':
             product = action.cart;
@@ -53,7 +64,6 @@ export const CartReducer = (state, action) => {
             return {
                 shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
             }
-            // break;
 
         case 'DEC':
             product = action.cart;
@@ -71,7 +81,6 @@ export const CartReducer = (state, action) => {
             else {
                 return state;
             }
-            // break;
 
         case 'DELETE':
             const filtered = shoppingCart.filter(product => product.ProductID !== action.id);
@@ -81,7 +90,6 @@ export const CartReducer = (state, action) => {
             return {
                 shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
             }
-            // break;
 
         case 'EMPTY':
             return {
