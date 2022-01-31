@@ -88,7 +88,8 @@ import Dashboard from './pages/dashboard'
 import Rewards from './pages/rewards'
 import Login from './pages/login'
 import Signup from './pages/signup'
-import AddProducts from './util/AddProducts'
+import "./index.css"
+// import AddProducts from './util/AddProducts'
 
 export const App = () => {
   return (
@@ -99,7 +100,7 @@ export const App = () => {
           <Route exact path="/dashboard" element={<Dashboard/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/rewards" element={<Rewards/>} />
-          <Route path="/addproducts" element={<AddProducts/>} />
+          {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
         </Routes>
       </Router>
   )

@@ -66,15 +66,16 @@ import {Link} from 'react-router-dom'
 import {auth} from '../util/firebase'
 import {useNavigate} from 'react-router-dom'
 
+
 const Login = () => {
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
-
     const [errorMsg, setErrorMsg]=useState('');
     const [successMsg, setSuccessMsg]=useState('');
+
 
     const handleLogin=(e)=>{
         e.preventDefault();
@@ -84,10 +85,8 @@ const Login = () => {
             setEmail('');
             setPassword('');
             setErrorMsg('');
-            setTimeout(()=>{
-                setSuccessMsg('');
-                history.push('/');
-            },3000)
+            setSuccessMsg('');
+            navigate('/dashboard');
         }).catch(error=>setErrorMsg(error.message));
     }
 
@@ -112,8 +111,8 @@ const Login = () => {
                 onChange={(e)=>setPassword(e.target.value)} value={password}></input>
                 <br></br>
                 <div className='btn-box'>
-                    <span>Don't have an account SignUp
-                    <Link to="signup" className='link'> Here</Link></span>
+                    <span><Link to="/signup" className='link'>Don't have an account? Sign up!</Link></span>
+                    <br/>
                     <button type="submit" className='btn btn-success btn-md'>LOGIN</button>
                 </div>
             </form>

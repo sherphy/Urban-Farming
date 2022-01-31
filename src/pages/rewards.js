@@ -60,19 +60,19 @@ import { auth, db } from '../util/firebase'
 const Rewards = (props) => {
 
     // gettin current user uid
-    function GetUserUid(){
-        const [uid, setUid]=useState(null);
+    function GetUserEmail(){
+        const [email, setEmail]=useState(null);
         useEffect(()=>{
             auth.onAuthStateChanged(user=>{
                 if(user){
-                    setUid(user.uid);
+                    setEmail(user.email);
                 }
             })
         },[])
-        return uid;
+        return email;
     }
 
-    const uid = GetUserUid();
+    const useremail = GetUserEmail();
 
     // getting current user function
     function GetCurrentUser(){
@@ -80,8 +80,8 @@ const Rewards = (props) => {
         useEffect(()=>{
             auth.onAuthStateChanged(user=>{
                 if(user){
-                    db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
-                        setUser(snapshot.data().FullName);
+                    db.collection('SignedUpUsersData').doc(user.useremail).get().then(snapshot=>{
+                        setUser(snapshot.data());
                     })
                 }
                 else{
@@ -120,12 +120,12 @@ const Rewards = (props) => {
     
     let Product;
     const addToCart = (product)=>{
-        if(uid!==null){
+        if(useremail!==null){
             // console.log(product);
             Product=product;
             Product['qty']=1;
             Product['TotalProductPrice']=Product.qty*Product.price;
-            db.collection('Cart ' + uid).doc(product.ID).set(Product).then(()=>{
+            db.collection('Cart ' + useremail).doc(product.ID).set(Product).then(()=>{
                 console.log('successfully added to cart');
             })
 
