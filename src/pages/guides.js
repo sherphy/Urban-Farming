@@ -2,9 +2,25 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import PlantWikiCard from "../components/PlantWikiCard";
 import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme } from "@material-ui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 'auto',
+    padding: "20px 20px 20px 20px",
+    background: "rgba(250, 243, 221, 0.85)",
+    borderRadius: "10px",
+    width: '50%',
+  },
+}));
 
 
 const Guides = () => {
+  const classes = useStyles();
   const plantArr = [
     "BakChoy",
     "Bayam",
@@ -22,8 +38,8 @@ const Guides = () => {
   ]; //added on 27/12/21 & added a recipe on 12/1/22
 
   return (
-    
-    <Grid container spacing={2} justify="space-evenly" item style={{ border: "0.2px solid gray", backgroundColor:"#FFE5B4",}}>
+   
+    <Grid container spacing={2} justify="space-evenly" className={classes.container}>
         <Grid container justify="space-between">  
         <Typography inline variant="h4" align="center">Plants</Typography>
         </Grid> {/*added on 31/12/21*/}
