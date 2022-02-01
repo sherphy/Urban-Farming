@@ -1,7 +1,9 @@
 import React,{useState, useEffect} from 'react'
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
 import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
+//if we want to monetize
+// import StripeCheckout from 'react-stripe-checkout';
 
 const Cart = () => {
 
@@ -49,6 +51,29 @@ const Cart = () => {
 
     // console.log(cartProducts);
 
+       // getting the qty from cartProducts in a seperate array
+       const qty = cartProducts.map(cartProduct=>{
+        return cartProduct.qty;
+    })
+
+    // reducing the qty in a single value
+    const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
+
+    const totalQty = qty.reduce(reducerOfQty,0);
+
+    // console.log(totalQty);
+
+    // getting the TotalProductPrice from cartProducts in a seperate array
+    const price = cartProducts.map((cartProduct)=>{
+        return cartProduct.TotalProductPrice;
+    })
+
+    // reducing the price in a single value
+    const reducerOfPrice = (accumulator,currentValue)=>accumulator+currentValue;
+
+    const totalPrice = price.reduce(reducerOfPrice,0);
+
+
     let Product;
     
     // cart product increase function
@@ -92,7 +117,7 @@ const Cart = () => {
    
     return (
         <>
-            <Navbar user={user} />           
+            {/* <Navbar user={user} totalProducts={totalProducts} />            */}
             <br></br>
             {cartProducts.length > 0 && (
                 <div className='container-fluid'>
@@ -103,6 +128,20 @@ const Cart = () => {
                            cartProductDecrease={cartProductDecrease}
                         />
                     </div>
+                    <div className='summary-box'>
+                        <h5>Cart Summary</h5>
+                        <br></br>
+                        <div>
+                        Total No of Products: <span>{totalQty}</span>
+                        </div>
+                        <div>
+                        Total Price to Pay: <span>$ {totalPrice}</span>
+                        </div>
+                        <br></br>
+                        {/* <StripeCheckout
+                        
+                        ></StripeCheckout> */}
+                    </div>                                    
                 </div>
             )}
             {cartProducts.length < 1 && (

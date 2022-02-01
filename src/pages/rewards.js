@@ -107,9 +107,14 @@
 
 // export default Rewards;
 
+//BASICALLY NEED TO FIND A WAY TO ADD MORE THAN 1 
 import React,{useState, useEffect} from 'react'
 import Products from '../util/Product'
 import {auth, db } from '../util/firebase'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const Rewards = (props) => {
 
@@ -147,14 +152,14 @@ const Rewards = (props) => {
     }
 
     const user = GetCurrentUser();
-    // console.log(user);
+    console.log(user);
     
     // state of products
     const [products, setProducts]=useState([]);
 
     // getting products function
     const getProducts = async ()=>{
-        const products = await db.collection('Products').get();
+        const products = await db.collection('Products').orderBy("price","asc").get();
         const productsArray = [];
         for (var snap of products.docs){
             var data = snap.data();
@@ -180,14 +185,22 @@ const Rewards = (props) => {
             Product['qty']=1;
             Product['TotalProductPrice']=Product.qty*Product.price;
             db.collection('Cart ' + uid).doc(product.ID).set(Product).then(()=>{
-                console.log('successfully added to cart');
+            console.log('successfully added to cart');
+            //success notification procs even when quantity is more than 1 
+            toast.success('This product has been added to your cart', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
             })
-
         }
         else{
-            props.history.push('/login');
+            props.history.push('/dashboard');
         }
-        
     }
     
     return (
@@ -195,7 +208,8 @@ const Rewards = (props) => {
             <br></br>
             {products.length > 0 && (
                 <div className='container-fluid'>
-                    <h1 className='text-center'>Products</h1>
+                    <h1 className='text-center'>Rewards</h1>
+                    <h3 className='text-center'>Redeem real life items here!</h3>
                     <div className='products-box'>
                         <Products products={products} addToCart={addToCart}/>
                     </div>
