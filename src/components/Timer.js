@@ -3,8 +3,9 @@ import {React,useState,useEffect} from "react";
 
 export default function Timer() {
     const [time,setTime] = useState("")
+    
     useEffect(()=>{
-        let countDownDate = new Date(new Date("Jan 26, 2022 00:00:00").getTime() + (24 * 60 * 60 * 1000)); //reset every day at 12am
+        let countDownDate = new Date(new Date("Feb 3, 2022 00:00:00").getTime() + (24 * 60 * 60 * 1000)); //reset every day at 12am
         //update every second
         let x=setInterval(function(){
             //Get todays date and time
@@ -30,10 +31,13 @@ export default function Timer() {
 }
 
 const style = {
-    fontSize:"90px",
+    fontSize:"30px",
     textAlign: "center",
     color:"blue",
-    width: "50%",
+    width: "30%",
     backgroundColor: "#FFE5B4",
+    position:"absolute",
+    right:'120px', //how far it is spaced from top
+    top:'120px', //how far it is spaced from top
 
 }
