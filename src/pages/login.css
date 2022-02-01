@@ -1,0 +1,68 @@
+/*doing styling for signup and login in css so code can be edited more easily without interupting styling
+Note that some names of login/signup form components have to be exact so it does not screw up other components
+
+/*set border to the form*/
+    
+    .sign {
+        background-color: gold;
+        text-align: center;       
+        width: 50%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+
+    form {
+        border: 3px solid #f1f1f1;
+        background-color: peachpuff;
+        
+    }
+    /*assign full width inputs*/
+    input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    /*set a style for the buttons*/
+     
+    button[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    /* set a hover effect for the button*/
+      
+    button[type=submit]:hover {
+        opacity: 0.8;
+    }
+    /*set padding to the container*/
+      
+    .sign {
+        padding: 16px;
+    }
+    /*set styles for span on small screens*/
+      
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+    }
