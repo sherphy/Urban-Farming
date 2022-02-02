@@ -183,6 +183,7 @@ const Rewards = (props) => {
             console.log(product);
             Product = product;
             Product['qty'] = 1;
+            Product['Orderedby'] = user;
             Product['TotalProductPrice'] = Product.qty * Product.price;
             db.collection('Cart ' + uid).doc(product.ID).set(Product).then(() => {
                 console.log('successfully added to cart');

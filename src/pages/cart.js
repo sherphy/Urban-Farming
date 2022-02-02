@@ -52,14 +52,14 @@ const Cart = () => {
     // console.log(cartProducts);
 
        // getting the qty from cartProducts in a seperate array
-       const qty = cartProducts.map(cartProduct=>{
-        return cartProduct.qty;
-    })
+    //    const qty = cartProducts.map(cartProduct=>{
+    //     return cartProduct.qty;
+    // })
 
     // reducing the qty in a single value
-    const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
+    // const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
 
-    const totalQty = qty.reduce(reducerOfQty,0);
+    // const totalQty = qty.reduce(reducerOfQty,0);
 
     // console.log(totalQty);
 
@@ -130,17 +130,12 @@ const Cart = () => {
                     </div>
                     <div className='summary-box'>
                         <h5>Cart Summary</h5>
-                        <br></br>
                         <div>
-                        Total No of Products: <span>{totalQty}</span>
-                        </div>
-                        <div>
-                        Total Price to Pay: <span>$ {totalPrice}</span>
+                        Total Points Required: <span> {totalPrice} Points </span>
                         </div>
                         <br></br>
-                        {/* <StripeCheckout
-                        
-                        ></StripeCheckout> */}
+                        {/* process the points here */}
+                        <button> Order now! </button>
                     </div>                                    
                 </div>
             )}
