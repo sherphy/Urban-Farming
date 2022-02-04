@@ -82,30 +82,54 @@
 
 // export default App;
 
-import React from 'react'
+import React, {Component} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/dashboard'
 import Rewards from './pages/rewards'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Cart from './pages/cart'
+import Guides from './pages/guides'
 import "./index.css"
 // import AddProducts from './util/AddProducts'
 
-export const App = () => {
+//for styling
+import Background from "./images/Background2.jpg";
+//Navbar
+// import WithoutNav from "./components//WithoutNav";
+import WithNav from "./components//WithNav";
+
+
+var backgroundStyle = {
+  minHeight: "100vh", 
+  backgroundImage: `url(${Background})`,
+  backgroundSize: "150%", 
+  backgroundPosition: "center",
+  backgroundRepeat: "repeat-y",
+};
+
+export class App extends Component {
+  render() {
   return (
-      <Router>
-        <div className="App"></div>
-        <Routes>
-          <Route exact path="/" element={<Login/>} />
-          <Route exact path="/dashboard" element={<Dashboard/>} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/rewards" element={<Rewards/>} />
-          <Route path="/cart" element={<Cart/>} />
+    <Router>
+      <div className="App"></div>
+      <div className="container" style={backgroundStyle}></div>
+      <Routes>
+        {/* <Route element={<WithoutNav />}> */}
+          <Route exact path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        {/* </Route> */}
+        <Route element={<WithNav />}>
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route path="/rewards" element={<Rewards />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/guides" element={<Guides />} />
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
-        </Routes>
-      </Router>
-  )
+          </Route>
+          </Routes>
+        </Router>
+        );
+  }
 }
 
-export default App
+        export default App
