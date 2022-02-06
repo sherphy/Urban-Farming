@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
-import { Grid, TextField, Button} from "@material-ui/core";
+// import { Grid, TextField, Button} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {

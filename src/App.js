@@ -113,7 +113,7 @@ export class App extends Component {
   return (
     <Router>
       <div className="App"></div>
-      <div className="container" style={backgroundStyle}></div>
+      <div className="container" style={backgroundStyle}>
       <Routes>
         {/* <Route element={<WithoutNav />}> */}
           <Route exact path="/" element={<Login />} />
@@ -127,6 +127,7 @@ export class App extends Component {
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
           </Route>
           </Routes>
+          </div>
         </Router>
         );
   }
