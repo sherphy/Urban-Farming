@@ -65,6 +65,7 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import {auth} from '../util/firebase'
 import {useNavigate} from 'react-router-dom'
+// import {setPersistence} from "firebase/auth";
 
 
 const Login = () => {
@@ -80,6 +81,7 @@ const Login = () => {
     const handleLogin=(e)=>{
         e.preventDefault();
         // console.log(email, password);
+        auth.setPersistence('local');
         auth.signInWithEmailAndPassword(email,password).then(()=>{
             setSuccessMsg('Login Successfull. You will now automatically get redirected to Home page');
             setEmail('');
@@ -98,6 +100,7 @@ const Login = () => {
             <hr></hr>
             {successMsg&&<>
                 <div className='success-msg'>{successMsg}</div>
+                {navigate('/dashboard')};
                 <br></br>
             </>}
             <form className='form-group' autoComplete="off"
