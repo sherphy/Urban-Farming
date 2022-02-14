@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   },
 
   plantInfo: {
-    maxHeight: 550, //edited 29/12/21 previously it was 500
+    maxHeight: 500,
   },
 });
 
