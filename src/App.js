@@ -108,6 +108,7 @@ var backgroundStyle = {
   backgroundRepeat: "repeat-y",
 };
 
+
 export class App extends Component {
   render() {
   return (
