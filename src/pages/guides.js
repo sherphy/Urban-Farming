@@ -80,7 +80,7 @@ const Guides = () => {
       })}
       
   <Grid container justify="space-between">  
-  <Typography inline variant="h5" align="left">>Have a recipe or information you would like to share? Let us know!</Typography>
+  <Typography inline variant="h5" align="left">Have a recipe or information you would like to share? Let us know!</Typography>
   </Grid> {/*added on 4/1/22*/}
 
     </Grid>
