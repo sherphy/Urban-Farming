@@ -99,7 +99,6 @@ import Background from "./images/Background2.jpg";
 // import WithoutNav from "./components//WithoutNav";
 import WithNav from "./components//WithNav";
 
-
 var backgroundStyle = {
   minHeight: "100vh", 
   backgroundImage: `url(${Background})`,
@@ -115,10 +114,8 @@ export class App extends Component {
       <div className="App"></div>
       <div className="container" style={backgroundStyle}>
       <Routes>
-        {/* <Route element={<WithoutNav />}> */}
           <Route exact path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-        {/* </Route> */}
         <Route element={<WithNav />}>
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/rewards" element={<Rewards />} />

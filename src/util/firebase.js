@@ -7,7 +7,7 @@ import "firebase/compat/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyAXqEpFzbnhrXvPoZEeIVU5qnnzRDbgi6w",
     authDomain: "eg4301-urban-farming.firebaseapp.com",
-    databaseURL: "https://eg4301-urban-farming-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL: "https://eg4301-urban-farming-850a0.firebaseio.com/",
     projectId: "eg4301-urban-farming",
     storageBucket: "eg4301-urban-farming.appspot.com",
     messagingSenderId: "14363207375",
