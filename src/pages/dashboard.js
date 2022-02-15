@@ -3,6 +3,9 @@
 // import React, { useState } from "react";
 import React, { useEffect } from "react";
 import moment from "moment";
+//for points
+import { useState } from "react";
+import { auth, db } from "../util/firebase";
 
 const Dashboard = () => {
     //for user database
@@ -54,13 +57,75 @@ const Dashboard = () => {
         } 
     
     console.log(streakCounter());
-    console.log(secondsToMidnight + " for next reset")
-      
+    console.log(secondsToMidnight + " for next reset");
+    
+    //for the streak points of the day    
+    //must run streakCounter first, then if there is a streak,
+    //add it to the getStreakPoints that resets daily
+    //caps off at 5 streaks
+    var streakPoints = 0;
+
+    const getStreakPoints = () => {
+        if (streak < 5) {
+            streakPoints = streak;
+            return streakPoints;
+        }
+        else {
+            return 5;
+        }
+    }
+    getStreakPoints();
+
+    // console.log(getStreakPoints());
+
+
+    // get the current points they have in their database
+    function GetCurrentUser(){
+        const [userPoints, setUserPoints]=useState('');
+
+        useEffect(()=>{
+            //this probably reloads the console
+            auth.onAuthStateChanged(user=>{
+                if(user){
+                    db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
+                        setUserPoints(snapshot.data().Points);
+                        // setFullName(snapshot.data().FullName);
+                        // setEmail(snapshot.data().Email);
+                        // setCamera(snapshot.data().Camera);
+                        setUid(user.uid);
+                    })
+                }
+                else{
+                    setUserPoints(null);
+                }
+            })
+        },[])
+        return userPoints;
+    }
+    const userPoints = GetCurrentUser();
+    //to copy other relevant fields over for user data to update
+    //otherwise the whole object must update
+    // const [FullName, setFullName] = useState('');
+    // const [Email, setEmail] = useState('');
+    // const [Camera, setCamera] = useState('');
+    
+    const [uid, setUid] = useState('');
+    const userid = uid;
+    console.log(userid + " user id")
+    console.log(userPoints + " user points from database pre-update");
+    const finalPoints = userPoints + streakPoints;
+    console.log(finalPoints + " database points");
+    //must add the streakPoints to existing database points
+    //cannot just call uid in case blank
+    if (uid) {
+    db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
+    }
+
     return (
         <div>
             <h1>Welcome back, </h1>
                 <h3> 
-                    {secondsToMidnight === 0 && streakCounter()};
+                    {secondsToMidnight === 0 && streakCounter}
                     You have a streak of: {streak}
                 </h3>
             {/* {users.map((user) => (
