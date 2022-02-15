@@ -113,13 +113,11 @@ const Dashboard = () => {
     //which is determined on streakCounter
     //then i will renew the property of "Points" in database 
     //by taking the initial points + streakPoints of the day, added once
-    if (secondsToMidnight === 0) {
-        //must add the streakPoints to existing database points
-        //cannot just call uid in case blank
+    //must add the streakPoints to existing database points
+    //cannot just call uid in case blank
       if (uid) {
         db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
         }
-    }
     console.log(finalPoints + " database points");
 
     return (
