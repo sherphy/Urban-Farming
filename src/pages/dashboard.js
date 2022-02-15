@@ -8,16 +8,6 @@ import { useState } from "react";
 import { auth, db } from "../util/firebase";
 
 const Dashboard = () => {
-    //for user database
-    // const [users, setUsers] = useState([]);
-    // const [loading, setLoading] = useState(false);
-
-    // const ref = firebase.firestore().collection("users");
-
-    // if (loading) {
-    //     return <h1>Loading...</h1>;
-    // }
-
     //for login streak
     var getLastRefreshDate = Date();
     //must save to local storage, otherwise date keeps updating
@@ -41,6 +31,7 @@ const Dashboard = () => {
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
     const streakCounter = () => {
+        if (secondsToMidnight === 0) {
           if (timeSinceRefresh < 8.64e7) {
             streak += 1;
             console.log("retained streak of " + streak);
@@ -55,6 +46,7 @@ const Dashboard = () => {
           //for both, so they all reset at midnight 
           return streak;
         } 
+    }
     
     console.log(streakCounter());
     console.log(secondsToMidnight + " for next reset");
@@ -63,8 +55,9 @@ const Dashboard = () => {
     //must run streakCounter first, then if there is a streak,
     //add it to the getStreakPoints that resets daily
     //caps off at 5 streaks
-    var streakPoints = 0;
+    var streakPoints = 1;
 
+    streakCounter();
     const getStreakPoints = () => {
         if (streak < 5) {
             streakPoints = streak;
@@ -74,7 +67,6 @@ const Dashboard = () => {
             return 5;
         }
     }
-    getStreakPoints();
 
     // console.log(getStreakPoints());
 
@@ -89,7 +81,7 @@ const Dashboard = () => {
                 if(user){
                     db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
                         setUserPoints(snapshot.data().Points);
-                        // setFullName(snapshot.data().FullName);
+                        setFullName(snapshot.data().FullName);
                         // setEmail(snapshot.data().Email);
                         // setCamera(snapshot.data().Camera);
                         setUid(user.uid);
@@ -105,7 +97,7 @@ const Dashboard = () => {
     const userPoints = GetCurrentUser();
     //to copy other relevant fields over for user data to update
     //otherwise the whole object must update
-    // const [FullName, setFullName] = useState('');
+    const [FullName, setFullName] = useState('');
     // const [Email, setEmail] = useState('');
     // const [Camera, setCamera] = useState('');
     
@@ -113,26 +105,29 @@ const Dashboard = () => {
     const userid = uid;
     console.log(userid + " user id")
     console.log(userPoints + " user points from database pre-update");
+    getStreakPoints();
     const finalPoints = userPoints + streakPoints;
-    console.log(finalPoints + " database points");
-    //must add the streakPoints to existing database points
-    //cannot just call uid in case blank
-    if (uid) {
-    db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
+
+    //if it is a new day, the streak count increases by 1
+    //the points that i add to the database will be getStreakPoints
+    //which is determined on streakCounter
+    //then i will renew the property of "Points" in database 
+    //by taking the initial points + streakPoints of the day, added once
+    if (secondsToMidnight === 0) {
+        //must add the streakPoints to existing database points
+        //cannot just call uid in case blank
+      if (uid) {
+        db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
+        }
     }
+    console.log(finalPoints + " database points");
 
     return (
         <div>
-            <h1>Welcome back, </h1>
+            <h1>Welcome back, {FullName} </h1>
                 <h3> 
-                    {secondsToMidnight === 0 && streakCounter}
                     You have a streak of: {streak}
                 </h3>
-            {/* {users.map((user) => (
-                <div key={user.name}>
-                    <h2>{user.points}</h2>
-                </div>
-            ))} */}
         </div>
     );
 }
