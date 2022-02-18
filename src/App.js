@@ -74,7 +74,7 @@ export class App extends Component {
           <div className="container" style={backgroundStyle}>
             <UserAuthContextProvider>
               <Routes>
-              <Route element={<WithoutNav />}>
+              {/*<Route element={<WithoutNav />}>*/}
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
               </Route>
