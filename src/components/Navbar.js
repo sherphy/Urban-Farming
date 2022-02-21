@@ -47,7 +47,7 @@ const Navbar = () => {
             </IconButton>
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Project Name
+              EG4301 Urban Farming
             </Typography>
 
             {/*<IconButton aria-label="Show cart items" color="inherit">
