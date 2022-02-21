@@ -170,7 +170,7 @@ const Rewards = (props) => {
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
          <div class="lists">
-           <Grid container spacing={1} direction="column" alignItems="center" justify="center">
+           <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
                <Products className="item" products={products} addToCart={addToCart}/>
             </Grid>
          </div>
