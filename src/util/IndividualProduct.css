@@ -42,16 +42,19 @@ img{
     font-size:50px;
     font-weight: 700;
     margin-bottom: 20px;
+    padding-right: 100px;
 }
 
 .description{
     font-size:30px;
     font-weight: 300;
     margin-bottom: 20px;
+    padding-right: 100px;
 }
 
 .price{
     font-size:30px;
     font-weight: 300;
     margin-bottom: 20px;
+    padding-right: 100px;
 }
