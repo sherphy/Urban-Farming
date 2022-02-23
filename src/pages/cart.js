@@ -2,8 +2,11 @@ import React,{useState, useEffect} from 'react'
 // import Navbar from '../components/Navbar'
 import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
+import { toast } from 'react-toastify'; 
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
+
+toast.configure();
 
 const Cart = () => {
 
@@ -158,39 +161,77 @@ const Cart = () => {
     //     })
     // }
 
-    const CompleteOrder = () => {
-        // useEffect(() => {
-            auth.onAuthStateChanged(user => {
-                if (user) {
-                    const docRef = db.collection('Cart ' + user.uid).doc();
-                    const docData = docRef
-                        .get()
-                        .then((doc) => doc.exists && doc.data())
-                        .catch((error) => {
-                            console.error('Error reading document')
-                        });
+    // const CompleteOrder = (cartProduct) => {
+    //     // useEffect(() => {
+    //         auth.onAuthStateChanged(user => {
+    //             if (user) {
+    //                 const docRef = db.collection('Cart ' + user.uid).doc(cartProducts.id)
+    //                 const docData = docRef
+    //                     .get()
+    //                     .then((doc) => doc.exists && doc.data())
+    //                     .catch((error) => {
+    //                         console.error('Error reading document')
+    //                     });
 
-                    if (docData) {
-                        // document exists, create the new item
-                        db.collection('Paid cart ' + user.uid)
-                            .doc()
-                            .set({ ...docData})
-                            .catch((error) => {
-                                console.error('Error creating document');
+    //                 if (docData) {
+    //                     // document exists, create the new item
+    //                     db.collection('Paid cart ' + user.uid)
+    //                         .doc()
+    //                         .set({ ...docData})
+    //                         .catch((error) => {
+    //                             console.error('Error creating document');
+    //                         });
+    //                     db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
+
+    //                 }
+    //                 else {
+    //                     console.log('checkout fail');
+    //                 }
+    //             }
+    //         })
+    //     // })
+    // }
+
+    function Checkout() {
+        //copy the entire database over from Cart to Paid Cart
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection('Cart ' + user.uid).get()
+                    .then((snapshot) => {
+                        snapshot.forEach((doc) => {
+                            // We are iterating on the documents of the collection
+                            let data = doc.data();
+                            console.log(doc.id, '=>', doc.data());
+                            let setDoc = db.collection('Paid Cart ' + user.uid).doc(doc.id).set(data);
+                            setDoc.then(res => {
+                                console.log('Set: ', res);
                             });
-                        db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
+                        })
+                    })
+                //now start minusing the points
+                db.collection('SignedUpUsersData').doc(user.uid).set({Points: pointsAfterTransaction});
+                //CURRENT PROBLEM: 
+                //if users add an item that they already checked out before we reset their Paid Cart database
+                //then their previous item gets overwritten
 
-                    }
-                    else {
-                        console.log('checkout fail');
-                    }
-                }
-            })
-        // })
+                //how about if doc.id already exists, then db.collection Paid Cart field .qty += Cart field .qty
+
+                db.collection('Cart ' + user.uid).get()
+                  .then((snapshot) => {
+                    snapshot.forEach((doc) => {
+                        db.collection('Cart ' + user.uid).doc(doc.id).delete();
+                    })
+                  })
+            }
+            else {
+                console.log('checkout fail');
+            }
+        })
     }
 
-    //still must make a function that does the cant checkout if too little points
-    //must make an entire checkout function
+    // const successMsg = () => {
+
+    // }
 
     return (
         <>
@@ -214,24 +255,26 @@ const Cart = () => {
                         Total Points You Have Now: <span> {userPoints} Points </span>
                         </div>
                         {pointsAfterTransaction >= 0 &&
-                        <div>
-                        You have enough points to purchase this!
-                        <div/>
-                        You will have {pointsAfterTransaction} after this!
-                        {/* make it green */}
-                        <br/>
-                        <button onClick={CompleteOrder}> Order now! </button>
-                        {/* need to redirect on click otherwise they confused */}
-                        {/* also need to clear all the current */}
-                        </div>
+                            <div>
+                                You have enough points to purchase this!
+                                <div />
+                                You will have {pointsAfterTransaction} after this!
+                                {/* make it green */}
+                                <br />
+                                <button onClick={Checkout}> Confirm order! </button>
+                                {/* need to say something on click otherwise they confused */}
+                                <div />
+                                {/* {Checkout &&
+                                    <h1> Your order is confirmed </h1>} */}
+                            </div>
                         }
                         {pointsAfterTransaction < 0 &&
-                        <div>
-                        You do not have enough points to get this.
-                        <br/>
-                        You need {-pointsAfterTransaction} more points! 
-                        {/* make it red */}
-                        </div>
+                            <div>
+                                You do not have enough points to get this.
+                                <br />
+                                You need {-pointsAfterTransaction} more points!
+                                {/* make it red */}
+                            </div>
                         }
                     </div>                                    
                 </div>
