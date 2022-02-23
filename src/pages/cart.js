@@ -114,7 +114,40 @@ const Cart = () => {
             })
         }
     }
-   
+
+    // const currentPoints = () => {
+    // if(user){
+    // db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
+    //     setUserPoints(snapshot.data().Points);
+    // })
+    // }
+    // }
+
+    function GetCurrentPoints(){
+        const [userPoints, setUserPoints]=useState('');
+
+        useEffect(()=>{
+            //this probably reloads the console
+            auth.onAuthStateChanged(user=>{
+                if(user){
+                    db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
+                        setUserPoints(snapshot.data().Points);
+                    })
+                }
+                else{
+                    setUserPoints(null);
+                }
+            })
+        },[])
+        return userPoints;
+    }
+    const userPoints = GetCurrentPoints();
+    const pointsAfterTransaction = userPoints - totalPrice;
+    console.log(pointsAfterTransaction);
+
+    //still must make a function that does the cant checkout if too little points
+    //must make an entire checkout function
+
     return (
         <>
             {/* <Navbar user={user} totalProducts={totalProducts} />            */}
@@ -133,8 +166,24 @@ const Cart = () => {
                         <div>
                         Total Points Required: <span> {totalPrice} Points </span>
                         </div>
+                        <div>
+                        Total Points You Have Now: <span> {userPoints} Points </span>
+                        </div>
+                        {pointsAfterTransaction >= 0 &&
+                        <div>
+                        You have enough points to purchase this!
+                        {/* make it green */}
+                        </div>
+                        }
+                        {pointsAfterTransaction < 0 &&
+                        <div>
+                        You do not have enough points to purchase this.
+                        <br/>
+                        You need {-pointsAfterTransaction} more points! 
+                        {/* make it red */}
+                        </div>
+                        }
                         <br></br>
-                        {/* process the points here */}
                         <button> Order now! </button>
                     </div>                                    
                 </div>

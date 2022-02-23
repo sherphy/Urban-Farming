@@ -115,7 +115,7 @@ const Dashboard = () => {
     //by taking the initial points + streakPoints of the day, added once
     //must add the streakPoints to existing database points
     //cannot just call uid in case blank
-      if (uid) {
+      if (uid && secondsToMidnight === 0) {
         db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
         }
     console.log(finalPoints + " database points");
@@ -124,7 +124,9 @@ const Dashboard = () => {
         <div>
             <h1>Welcome back, {FullName} </h1>
                 <h3> 
-                    You have a streak of: {streak}
+                    {/* You have a streak of: {streak} */}
+                    {/* you get x points for logging in for x consecutive days
+                    notification style */}
                 </h3>
         </div>
     );

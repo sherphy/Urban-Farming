@@ -67,7 +67,6 @@ import {auth} from '../util/firebase'
 import {useNavigate} from 'react-router-dom'
 // import {setPersistence} from "firebase/auth";
 
-
 const Login = () => {
 
     const navigate = useNavigate();
@@ -76,7 +75,6 @@ const Login = () => {
     const [password, setPassword]=useState('');
     const [errorMsg, setErrorMsg]=useState('');
     const [successMsg, setSuccessMsg]=useState('');
-
 
     const handleLogin=(e)=>{
         e.preventDefault();
@@ -98,6 +96,11 @@ const Login = () => {
             <br></br>
             <h1>Login</h1>
             <hr></hr>
+            {/* redirect when authorised */}
+            {/* still debugging */}
+            {auth&& <>
+                {navigate('/dashboard')};
+            </>};
             {successMsg&&<>
                 <div className='success-msg'>{successMsg}</div>
                 {navigate('/dashboard')};
@@ -126,5 +129,6 @@ const Login = () => {
         </div>
     )
 }
+
 
 export default Login;
