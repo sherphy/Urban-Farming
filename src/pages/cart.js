@@ -173,18 +173,19 @@ const Cart = () => {
                         <div>
                         You have enough points to purchase this!
                         {/* make it green */}
+                        <br/>
+                        <button> Order now! </button>
                         </div>
                         }
+
                         {pointsAfterTransaction < 0 &&
                         <div>
-                        You do not have enough points to purchase this.
+                        You do not have enough points to get this.
                         <br/>
                         You need {-pointsAfterTransaction} more points! 
                         {/* make it red */}
                         </div>
                         }
-                        <br></br>
-                        <button> Order now! </button>
                     </div>                                    
                 </div>
             )}
