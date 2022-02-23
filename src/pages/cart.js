@@ -25,8 +25,8 @@ const Cart = () => {
         return user;
     }
 
-    const user = GetCurrentUser();
-    console.log(user);
+    let userFound = GetCurrentUser();
+    console.log(userFound);
     
     // state of cart products
     const [cartProducts, setCartProducts]=useState([]);
@@ -145,6 +145,19 @@ const Cart = () => {
     const pointsAfterTransaction = userPoints - totalPrice;
     console.log(pointsAfterTransaction);
 
+
+    const completeOrder = () => {
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection('Cart ' + user.uid).doc().set({Paid: true});
+                // might be buggy bc idk if u try to checkout another time aft paying
+                // then it will show as like the new items also paid for
+                // so udk whats in cart and whats alr paid 
+                db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
+            }
+        })
+    }
+
     //still must make a function that does the cant checkout if too little points
     //must make an entire checkout function
 
@@ -172,12 +185,13 @@ const Cart = () => {
                         {pointsAfterTransaction >= 0 &&
                         <div>
                         You have enough points to purchase this!
+                        <div/>
+                        You will have {pointsAfterTransaction} after this!
                         {/* make it green */}
                         <br/>
-                        <button> Order now! </button>
+                        <button onClick={completeOrder}> Order now! </button>
                         </div>
                         }
-
                         {pointsAfterTransaction < 0 &&
                         <div>
                         You do not have enough points to get this.
