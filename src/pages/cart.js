@@ -146,16 +146,47 @@ const Cart = () => {
     console.log(pointsAfterTransaction);
 
 
-    const completeOrder = () => {
-        auth.onAuthStateChanged(user=>{
-            if(user){
-                db.collection('Cart ' + user.uid).doc().set({Paid: true});
-                // might be buggy bc idk if u try to checkout another time aft paying
-                // then it will show as like the new items also paid for
-                // so udk whats in cart and whats alr paid 
-                db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
-            }
-        })
+    // const completeOrder = () => {
+    //     auth.onAuthStateChanged(user=>{
+    //         if(user){
+    //             db.collection('Cart ' + user.uid).doc().set({Paid: true});
+    //             // might be buggy bc idk if u try to checkout another time aft paying
+    //             // then it will show as like the new items also paid for
+    //             // so udk whats in cart and whats alr paid 
+    //             db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
+    //         }
+    //     })
+    // }
+
+    const CompleteOrder = () => {
+        // useEffect(() => {
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    const docRef = db.collection('Cart ' + user.uid).doc();
+                    const docData = docRef
+                        .get()
+                        .then((doc) => doc.exists && doc.data())
+                        .catch((error) => {
+                            console.error('Error reading document')
+                        });
+
+                    if (docData) {
+                        // document exists, create the new item
+                        db.collection('Paid cart ' + user.uid)
+                            .doc()
+                            .set({ ...docData})
+                            .catch((error) => {
+                                console.error('Error creating document');
+                            });
+                        db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
+
+                    }
+                    else {
+                        console.log('checkout fail');
+                    }
+                }
+            })
+        // })
     }
 
     //still must make a function that does the cant checkout if too little points
@@ -189,7 +220,9 @@ const Cart = () => {
                         You will have {pointsAfterTransaction} after this!
                         {/* make it green */}
                         <br/>
-                        <button onClick={completeOrder}> Order now! </button>
+                        <button onClick={CompleteOrder}> Order now! </button>
+                        {/* need to redirect on click otherwise they confused */}
+                        {/* also need to clear all the current */}
                         </div>
                         }
                         {pointsAfterTransaction < 0 &&
