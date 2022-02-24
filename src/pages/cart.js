@@ -196,7 +196,7 @@ const Cart = () => {
                 db.collection('Cart ' + user.uid).get()
                     .then((snapshot) => {
                         snapshot.forEach((doc) => {
-                            // We are iterating on the documents of the collection
+                            //iterating on the documents of the collection
                             let data = doc.data();
                             console.log(doc.id, '=>', doc.data());
                             let setDoc = db.collection('Paid Cart ' + user.uid).doc(doc.id).set(data);
@@ -210,6 +210,7 @@ const Cart = () => {
                 //CURRENT PROBLEM: 
                 //if users add an item that they already checked out before we reset their Paid Cart database
                 //then their previous item gets overwritten
+                //how to append
 
                 //how about if Cart doc.id === Paid Cart doc.id, then db.collection Paid Cart field .qty += Cart field .qty
 

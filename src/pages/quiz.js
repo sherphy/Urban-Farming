@@ -1,6 +1,5 @@
 import {db} from "../util/firebase";
 import { useEffect, useState } from "react";
-import { Title } from "@mui/icons-material";
 import { collection, getDocs } from "firebase/firestore";
 
 //     const GetVariables = () => {
@@ -41,7 +40,8 @@ const Quiz = () => {
     const questionsCollectionRef = collection(db, "Questions");
     const [questionSets, setQuestionSets]=useState([]);
     // const [correctAnswer, setCorrectDisplay]=useState('');
-
+    //wrong is always Try again
+    //correct is must manual set in database
 
     useEffect(() => {
         const getQuestionSets = async () => {
@@ -52,44 +52,34 @@ const Quiz = () => {
         getQuestionSets()
     }, [])
 
+    const isCorrect = () => {
+        // console.log(Questions.Answer)
+    }
+
+    
+
     return (
-        <div className="App">
+        <div className="Quiz">
             <h1> Daily quiz to earn rewards! </h1>
             {questionSets.map((Questions) => {
                 return (
                     <div>
                         <h1>Title: {Questions.Title}</h1>
+                        <button>Option 1: {Questions.Option1}</button>
+                        <br/>
+                        <button>Option 2: {Questions.Option2}</button>
+                        <br/>
+                        <button>Option 3: {Questions.Option3}</button>
+                        <br/>
+                        <button>Option 4: {Questions.Option4}</button>
+                        <br/>        
+                            <div>
+                                {Questions.Answer === Questions.Options}
+                            </div>           
                     </div>
                 );
             })}
         </div>
-                // <input type="text" className='form-control' required
-                // onChange={(e)=>setTitle(e.target.value)} value={Title}></input>
-                // <br></br>
-                // <label>Question ID</label>
-                // <input type="text" className='form-control' required
-                // onChange={(e)=>setID(e.target.value)} value={ID}></input>
-                // <br></br>
-                // <label>Option 1</label>
-                // <input type="string" className='form-control' required
-                // onChange={(e)=>setOption1(e.target.value)} value={Option1}></input>
-                // <br></br>
-                // <label>Option 2</label>
-                // <input type="string" className='form-control' required
-                // onChange={(e)=>setOption2(e.target.value)} value={Option2}></input>
-                // <br></br>
-                // <label>Option 3</label>
-                // <input type="string" className='form-control' required
-                // onChange={(e)=>setOption3(e.target.value)} value={Option3}></input>
-                // <br></br>
-                // <label>Option 4</label>
-                // <input type="string" className='form-control' required
-                // onChange={(e)=>setOption4(e.target.value)} value={Option4}></input>
-                // <br></br>
-                // <label>Answer</label>
-                // <input type="number" className='form-control' required
-                // onChange={(e)=>setAnswer(e.target.value)} value={Answer}></input>
-                // <br></br>
 )
 
 }
