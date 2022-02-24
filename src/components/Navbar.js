@@ -64,7 +64,6 @@ const Navbar = () => {
                   <Button variant="contained" size="large" onClick={handleDrawerClose} component={Link} to="/guides">Guides</Button>
                   <Button variant="contained" size="large" onClick={handleDrawerClose} component={Link} to="/rewards">Rewards</Button>
                   <Button variant="contained" size="large" onClick={handleDrawerClose} component={Link} to="/cart">Cart</Button>
-                  <Button variant="contained" size="large" onClick={handleDrawerClose} component={Link} to="/AddProducts">AddProducts</Button>
                 </Stack>
                 </List>
             </Drawer>
