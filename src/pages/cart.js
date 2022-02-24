@@ -2,11 +2,8 @@ import React,{useState, useEffect} from 'react'
 // import Navbar from '../components/Navbar'
 import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
-import { toast } from 'react-toastify'; 
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
-
-toast.configure();
 
 const Cart = () => {
 
@@ -214,7 +211,7 @@ const Cart = () => {
                 //if users add an item that they already checked out before we reset their Paid Cart database
                 //then their previous item gets overwritten
 
-                //how about if doc.id already exists, then db.collection Paid Cart field .qty += Cart field .qty
+                //how about if Cart doc.id === Paid Cart doc.id, then db.collection Paid Cart field .qty += Cart field .qty
 
                 db.collection('Cart ' + user.uid).get()
                   .then((snapshot) => {

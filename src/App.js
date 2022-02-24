@@ -90,8 +90,10 @@ import Login from './pages/login'
 import Signup from './pages/signup'
 import Cart from './pages/cart'
 import Guides from './pages/guides'
+import Quiz from "./pages/quiz"
 import "./index.css"
 // import AddProducts from './util/AddProducts'
+import AddQuestions from './util/AddQuestions'
 
 //for styling
 import Background from "./images/Background2.jpg";
@@ -121,7 +123,9 @@ export class App extends Component {
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/guides" element={<Guides />} />
+          <Route path="/quiz" element={<Quiz />} />
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
+          <Route path="/addquestions" element={<AddQuestions/>} />
           </Route>
           </Routes>
           </div>
