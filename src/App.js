@@ -12,6 +12,8 @@ import Products from "./pages/rewards";
 import Signup from "./pages/signup";
 import Cart from "./pages/cart";
 import AddProducts from "./util/AddProducts"
+import Quiz from "./pages/quiz"
+import AddQuestions from './util/AddQuestions'
 //might need to remove later to hide it from view
 // import AddProducts from "./components/AddProducts";
 //utilities
@@ -26,8 +28,7 @@ import WithoutNav from "./components/Layout/WithoutNav";
 import WithNav from "./components/Layout/WithNav";
 
 //testing
-import Timer from "./components/Timer"
-
+import Firebasef from "./util/firebase";
 
 var backgroundStyle = {
   minHeight: "100vh", 
@@ -74,21 +75,22 @@ export class App extends Component {
           <div className="container" style={backgroundStyle}>
             <UserAuthContextProvider>
               <Routes>
-              {/*<Route element={<WithoutNav />}>*/}
+               {/*<Route element={<WithoutNav />}>*/}
                 <Route exact path="/" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
-              </Route>
+               {/*</Route>*/}
               <Route element={<WithNav />}>
               
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/guides" element={<Guides />} />
-                <Route path="/rewards" element={<Products />} />
+                <Route path="/rewards" element={<Rewards />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/quiz" element={<Quiz />} />
+                <Route path="/addquestions" element={<AddQuestions/>} />
                 {/* might need to remove later to hide it from view */}
                 {/* <Route path='/addproducts' element={<AddProducts />} /> */}
+              {/*<Route path="/Firebasef" element={<Firebasef />} />*/}
               </Route>
-        
-               <Route path="/timer" element={<Timer />} /> {/*for testing/quiz component to be used later*/}
               </Routes>
             </UserAuthContextProvider>
           </div>
