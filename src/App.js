@@ -85,7 +85,7 @@ export class App extends Component {
                 <Route path="/rewards" element={<Products />} />
                 <Route path="/cart" element={<Cart />} />
                 {/* might need to remove later to hide it from view */}
-                <Route path='/addproducts' element={<AddProducts />} /> 
+                {/* <Route path='/addproducts' element={<AddProducts />} /> */}
               </Route>
         
                <Route path="/timer" element={<Timer />} /> {/*for testing/quiz component to be used later*/}
