@@ -206,7 +206,7 @@ const Cart = () => {
                         })
                     })
                 //now start minusing the points
-                db.collection('SignedUpUsersData').doc(user.uid).set({Points: pointsAfterTransaction});
+                db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
                 //CURRENT PROBLEM: 
                 //if users add an item that they already checked out before we reset their Paid Cart database
                 //then their previous item gets overwritten

@@ -91,7 +91,7 @@ const Login = () => {
     }
 
     return (
-        <div className='container'>
+        <div className="sign">
             <br></br>
             <br></br>
             <h1>Login</h1>

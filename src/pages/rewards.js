@@ -108,11 +108,18 @@
 // export default Rewards;
 
 //BASICALLY NEED TO FIND A WAY TO ADD MORE THAN 1 
-import React, { useState, useEffect } from 'react'
+import { Typography } from "@material-ui/core";
+// import React, { useContext,useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { makeStyles, useTheme } from "@material-ui/styles";
+import useWindowDimensions from "../util/useWindowDimensions";
+import shop from "../images/shop.png";
 import Products from '../util/Product'
 import { auth, db } from '../util/firebase'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Grid from '@mui/material/Grid';
+// import Card from '@mui/material/Card';
 
 toast.configure();
 
@@ -218,23 +225,69 @@ const Rewards = (props) => {
         }
     }
 
-    return (
-        <>
-            <br></br>
-            {products.length > 0 && (
-                <div className='container-fluid'>
-                    <h1 className='text-center'>Rewards</h1>
-                    <h3 className='text-center'>Redeem real life items here!</h3>
-                    <div className='products-box'>
-                        <Products products={products} addToCart={addToCart} />
-                    </div>
-                </div>
-            )}
-            {products.length < 1 && (
-                <div className='container-fluid'>Please wait....</div>
-            )}
-        </>
-    )
+    //frontend
+    const useStyles = makeStyles((theme) => ({
+        title: {
+          marginTop: 0, 
+          marginBottom: 10,
+        },
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "8px",
+          padding: "20px 20px 20px 20px",
+          background: "rgba(250, 243, 221, 0.85)",
+          borderRadius: "10px",
+        },
+        bodyText: {
+          marginTop: 10,
+          marginBottom: 10,
+        },
+      }));
+      
+
+  const { height, width } = useWindowDimensions();
+  const classes = useStyles();
+  const theme = useTheme();
+
+  let stlWidth, stlHeight;
+  let imgWidth, imgHeight;
+  let productWidth, productHeight;
+  if (width <= 960) {
+    stlWidth = 250;
+    stlHeight = 250;
+    imgWidth = 200;
+    imgHeight = 200;
+  } else {
+    stlWidth = 400;
+    stlHeight = 400;
+    imgWidth = 350;
+    imgHeight = 350;
+  }
+
+  return (
+    <>
+    <div className={classes.container}>
+     <img src={shop} alt="Logo" style={{ height: imgHeight, width: imgWidth }}/>
+     {products.length > 0 && (
+       <div>
+         <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
+         <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
+         <div class="lists">
+           <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
+               <Products className="item" products={products} addToCart={addToCart}/>
+            </Grid>
+         </div>
+       </div>
+      )}
+      {products.length < 1 && (
+        <div className='container-fluid'>Please wait....</div>
+      )} 
+    </div>
+    </>
+)
 }
 
 export default Rewards;
