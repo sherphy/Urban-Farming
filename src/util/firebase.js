@@ -7,20 +7,12 @@ import "firebase/compat/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyAXqEpFzbnhrXvPoZEeIVU5qnnzRDbgi6w",
     authDomain: "eg4301-urban-farming.firebaseapp.com",
-    databaseURL: "https://eg4301-urban-farming-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL: "https://eg4301-urban-farming-850a0.firebaseio.com/",
     projectId: "eg4301-urban-farming",
     storageBucket: "eg4301-urban-farming.appspot.com",
     messagingSenderId: "14363207375",
     appId: "1:14363207375:web:96d571fda134fc026b79ba"
 };
-
-//old version 
-// const app = initializeApp(firebaseConfig);
-// export const auth = getAuth(app);
-// export const db = initializeApp.firestore();
-// //remove if u want go local for product pics
-// export const storage = initializeApp.storage();
-// export default app;
 
 firebase.initializeApp(firebaseConfig);
 

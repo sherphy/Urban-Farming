@@ -66,6 +66,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = (props) => {
     // defining state
+    const [fullName, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -77,10 +78,15 @@ const Signup = (props) => {
         e.preventDefault();
         auth.createUserWithEmailAndPassword(email, password).then((cred) => {
             db.collection('SignedUpUsersData').doc(cred.user.uid).set({
+                FullName: fullName,
                 Email: email,
+                //must find way to update points
+                Points: 0,
+                Camera: "unset"
                 // Password: password
             }).then(() => {
                 setEmail('');
+                setFullname('');
                 setPassword('');
                 setError('');
                 navigate("/")
@@ -95,6 +101,10 @@ const Signup = (props) => {
             <h2>Sign up</h2>
             <br />
             <form autoComplete="off" className='form-group' onSubmit={signup}>
+                <label>Name</label>
+                <input type="text" className='form-control' required
+                    onChange={(e) => setFullname(e.target.value)} value={fullName}></input>
+                <br></br>
                 <label htmlFor="email">Email</label>
                 <input type="email" className='form-control' required
                     onChange={(e) => setEmail(e.target.value)} value={email} />
