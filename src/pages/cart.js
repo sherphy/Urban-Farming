@@ -2,8 +2,12 @@ import React,{useState, useEffect} from 'react'
 // import Navbar from '../components/Navbar'
 import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
+import { toast } from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
+
+toast.configure();
 
 const Cart = () => {
 
@@ -220,37 +224,44 @@ const Cart = () => {
                         db.collection('Cart ' + user.uid).doc(doc.id).delete();
                     })
                   })
+                  toast.success('Your order has been placed successfully', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                  });
             }
             else {
                 console.log('checkout fail');
             }
         })
+        navigate('/dashboard');
     }
 
-    // const successMsg = () => {
-
-    // }
+    // const navDash = useNavigate('/dashboard');
+    let navigate = useNavigate();
 
     return (
-        <>
-            {/* <Navbar user={user} totalProducts={totalProducts} />            */}
-            <br></br>
-            {cartProducts.length > 0 && (
+        <div>
+            {cartProducts.length > 0 &&
                 <div className='container-fluid'>
                     <h1 className='text-center'>Cart</h1>
                     <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
-                           cartProductIncrease={cartProductIncrease}
-                           cartProductDecrease={cartProductDecrease}
+                            cartProductIncrease={cartProductIncrease}
+                            cartProductDecrease={cartProductDecrease}
                         />
                     </div>
                     <div className='summary-box'>
                         <h5>Cart Summary</h5>
                         <div>
-                        Total Points Required: <span> {totalPrice} Points </span>
+                            Total Points Required: <span> {totalPrice} Points </span>
                         </div>
                         <div>
-                        Total Points You Have Now: <span> {userPoints} Points </span>
+                            Total Points You Have Now: <span> {userPoints} Points </span>
                         </div>
                         {pointsAfterTransaction >= 0 &&
                             <div>
@@ -261,11 +272,9 @@ const Cart = () => {
                                 <br />
                                 <button onClick={Checkout}> Confirm order! </button>
                                 {/* need to say something on click otherwise they confused */}
-                                <div />
-                                {/* {Checkout &&
-                                    <h1> Your order is confirmed </h1>} */}
                             </div>
                         }
+
                         {pointsAfterTransaction < 0 &&
                             <div>
                                 You do not have enough points to get this.
@@ -274,13 +283,14 @@ const Cart = () => {
                                 {/* make it red */}
                             </div>
                         }
-                    </div>                                    
+                    </div>
                 </div>
-            )}
-            {cartProducts.length < 1 && (
-                <div className='container-fluid'>No products to show</div>
-            ) }           
-        </>
+            }
+
+            {cartProducts.length < 1 && 
+                <div className='container-fluid'>No products to show </div>
+            }   
+        </div>    
     )
 }
 
