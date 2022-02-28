@@ -125,7 +125,10 @@ const Streak = () => {
         <div>
         <Typography align="center" inline variant="h5">Welcome back, {FullName}</Typography>
         <Typography align="center" inline variant="h5">
-                You have a streak of: {streak}
+                You get {streak} point(s) for logging in for {streak} consecutive day(s)!
+                <br></br>
+                You have {finalPoints} point(s) in total.
+                {/* updates at midnight */}
                 {/* You have a streak of: {streak} */}
                 {/* you get x points for logging in for x consecutive days
                 notification style */}

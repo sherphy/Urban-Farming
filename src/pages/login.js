@@ -65,6 +65,7 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import {auth} from '../util/firebase'
 import {useNavigate} from 'react-router-dom'
+import './login.css'
 // import {setPersistence} from "firebase/auth";
 
 const Login = () => {
@@ -98,9 +99,9 @@ const Login = () => {
             <hr></hr>
             {/* redirect when authorised */}
             {/* still debugging */}
-            {auth&& <>
-                {navigate('/dashboard')};
-            </>};
+            {auth.currentUser&& <>
+                {navigate('/dashboard')}
+            </>}
             {successMsg&&<>
                 <div className='success-msg'>{successMsg}</div>
                 {navigate('/dashboard')};
