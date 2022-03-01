@@ -168,7 +168,7 @@ const Rewards = (props) => {
      {products.length > 0 && (
        <div>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
-         <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
+         <Typography inline variant="h5" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
          <div class="lists">
            <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
                <Products className="item" products={products} addToCart={addToCart}/>
