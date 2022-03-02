@@ -2,8 +2,12 @@ import React,{useState, useEffect} from 'react'
 // import Navbar from '../components/Navbar'
 import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
+import { toast } from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
+
+toast.configure();
 
 const Cart = () => {
 
@@ -114,8 +118,8 @@ const Cart = () => {
             })
         }
     }
-   
-       // const currentPoints = () => {
+
+    // const currentPoints = () => {
     // if(user){
     // db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
     //     setUserPoints(snapshot.data().Points);
@@ -196,7 +200,7 @@ const Cart = () => {
                 db.collection('Cart ' + user.uid).get()
                     .then((snapshot) => {
                         snapshot.forEach((doc) => {
-                            // We are iterating on the documents of the collection
+                            //iterating on the documents of the collection
                             let data = doc.data();
                             console.log(doc.id, '=>', doc.data());
                             let setDoc = db.collection('Paid Cart ' + user.uid).doc(doc.id).set(data);
@@ -206,80 +210,88 @@ const Cart = () => {
                         })
                     })
                 //now start minusing the points
-                db.collection('SignedUpUsersData').doc(user.uid).set({Points: pointsAfterTransaction});
+                db.collection('SignedUpUsersData').doc(user.uid).update({Points: pointsAfterTransaction});
                 //CURRENT PROBLEM: 
                 //if users add an item that they already checked out before we reset their Paid Cart database
                 //then their previous item gets overwritten
+                //how to append
 
-                //how about if Cart doc.id === Paid Cart doc.id already exists, then db.collection Paid Cart field .qty += Cart field .qty
+                //how about if Cart doc.id === Paid Cart doc.id, then db.collection Paid Cart field .qty += Cart field .qty
 
                 db.collection('Cart ' + user.uid).get()
-                .then((snapshot) => {
-                  snapshot.forEach((doc) => {
-                      db.collection('Cart ' + user.uid).doc(doc.id).delete();
+                  .then((snapshot) => {
+                    snapshot.forEach((doc) => {
+                        db.collection('Cart ' + user.uid).doc(doc.id).delete();
+                    })
                   })
-                })
-          }
-          else {
-              console.log('checkout fail');
-          }
-      })
-  }
+                  toast.success('Your order has been placed successfully', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                  });
+            }
+            else {
+                console.log('checkout fail');
+            }
+        })
+        navigate('/dashboard');
+    }
 
-                            // const successMsg = () => {
-
-    // }
+    // const navDash = useNavigate('/dashboard');
+    let navigate = useNavigate();
 
     return (
-        <>
-            {/* <Navbar user={user} totalProducts={totalProducts} />            */}
-            <br></br>
-            {cartProducts.length > 0 && (
+        <div>
+            {cartProducts.length > 0 &&
                 <div className='container-fluid'>
                     <h1 className='text-center'>Cart</h1>
                     <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
-                           cartProductIncrease={cartProductIncrease}
-                           cartProductDecrease={cartProductDecrease}
+                            cartProductIncrease={cartProductIncrease}
+                            cartProductDecrease={cartProductDecrease}
                         />
                     </div>
                     <div className='summary-box'>
                         <h5>Cart Summary</h5>
                         <div>
-                        Total Points Required: <span> {totalPrice} Points </span>
+                            Total Points Required: <span> {totalPrice} Points </span>
                         </div>
                         <div>
-                        Total Points You Have Now: <span> {userPoints} Points </span>
+                            Total Points You Have Now: <span> {userPoints} Points </span>
                         </div>
                         {pointsAfterTransaction >= 0 &&
-                        <div>
-                        You have enough points to purchase this!
-                        <div />
-                        You will have {pointsAfterTransaction} after this!
-                        {/* make it green */}
-                        <br />
-                        <button onClick={Checkout}> Confirm order! </button>
-                        {/* need to say something on click otherwise they confused */}
-                        <div />
-                        {/* {Checkout &&
-                            <h1> Your order is confirmed </h1>} */}
+                            <div>
+                                You have enough points to purchase this!
+                                <div />
+                                You will have {pointsAfterTransaction} after this!
+                                {/* make it green */}
+                                <br />
+                                <button onClick={Checkout}> Confirm order! </button>
+                                {/* need to say something on click otherwise they confused */}
+                            </div>
+                        }
+
+                        {pointsAfterTransaction < 0 &&
+                            <div>
+                                You do not have enough points to get this.
+                                <br />
+                                You need {-pointsAfterTransaction} more points!
+                                {/* make it red */}
+                            </div>
+                        }
                     </div>
-                }
-                {pointsAfterTransaction < 0 &&
-                  <div>
-                  You do not have enough points to get this.
-                  <br />
-                  You need {-pointsAfterTransaction} more points!
-                  {/* make it red */}
-              </div>
-          }
-      </div>                                    
-  </div>
-              )}
-              {cartProducts.length < 1 && (
-                  <div className='container-fluid'>No products to show</div>
-              ) }           
-          </>
-      )
-  }
-  export default Cart;
+                </div>
+            }
+
+            {cartProducts.length < 1 && 
+                <div className='container-fluid'>No products to show </div>
+            }   
+        </div>    
+    )
+}
+
+export default Cart;
