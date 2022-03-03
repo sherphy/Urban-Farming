@@ -12,7 +12,7 @@
 // import firebase from "../util/firebase";
 // import React, { useState } from "react";
 import React,{ useEffect } from 'react'
-import { db,auth } from '../util/firebase'
+import { db,auth} from '../util/firebase'
 import Typography from "@material-ui/core/Typography";
 import "./dashboard.css"
 import firebase from 'firebase/compat/app';
@@ -20,6 +20,9 @@ import "firebase/auth";
 import { makeStyles, useTheme } from "@material-ui/styles";
 import withStyles from '@material-ui/core/styles/withStyles';
 import Streak from './streak.js'
+import Sensor from '../util/firebase';
+
+
 
 const useStyles = theme => ({
     title: {
@@ -88,6 +91,8 @@ class Dashboard extends React.Component{
                                 <Typography align="center" variant="h3" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography>
                                 <Typography inline variant="h5" className={classes.bodyText}>current user: {user.email} </Typography>
                                 <Streak/>
+                                <Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>
+                                <Sensor/>
                                 
                                 {(user.email === 'testuser2@testuser2.com' || user.email === 'testuser4@testuser4.com') &&
                                 <>
