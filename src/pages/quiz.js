@@ -2,7 +2,6 @@ import {db} from "../util/firebase";
 import { useEffect, useState } from "react";
 import { documentId, getDocs } from "firebase/firestore";
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore";
-import { CollectionsBookmarkRounded } from "@mui/icons-material";
 
 //if wrong answer then try again message
 const Quiz = () => {
@@ -10,7 +9,7 @@ const Quiz = () => {
     const [questionSets, setQuestionSets]=useState([]);
     const [correctAnswer, setCorrectDisplay]=useState('');
     //wrong is always Try again
-    //correct is must manual set in database
+    //correct shows correct and allocates points 
 
     const getQuestionSets = async () => {
         const data = await getDocs(questionsCollectionRef);
@@ -24,6 +23,11 @@ const Quiz = () => {
             setCorrectDisplay(snapshot.data().Answer);
         })
     })
+
+    // collate document UID into array
+    // hardcode ID into 1,2,3,... 
+    // give them button to do questions 
+    // pop up window where there are the questions 
 
     // // const evaluateIsCorrect = () => {
     // // let acceptingAnswers = true;
@@ -85,6 +89,9 @@ const Quiz = () => {
     const handleInput = (e) => {
         const buttonValue = e.target.value;
         console.log(buttonValue);
+        if (buttonValue === correctAnswer) {
+            console.log("isCorrect");
+        }
     }
     // const isCorrect = () => {
     //     if (handleInput() === correctAnswer) {

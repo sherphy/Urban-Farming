@@ -204,6 +204,7 @@ const Cart = () => {
                             let data = doc.data();
                             console.log(doc.id, '=>', doc.data());
                             let setDoc = db.collection('Paid Cart ' + user.uid).doc(doc.id).set(data);
+                            //change the doc.id part to quantity part 
                             setDoc.then(res => {
                                 console.log('Set: ', res);
                             });
@@ -217,6 +218,9 @@ const Cart = () => {
                 //how to append
 
                 //how about if Cart doc.id === Paid Cart doc.id, then db.collection Paid Cart field .qty += Cart field .qty
+                //if seed item is not there, then add the whole collection
+                //but if everything is there, then edit the ID 
+                //return whole cart collection, except qty 
 
                 db.collection('Cart ' + user.uid).get()
                   .then((snapshot) => {

@@ -109,7 +109,7 @@ const AddQuestions = () => {
                 onChange={(e)=>setOption4(e.target.value)} value={Option4}></input>
                 <br></br>
                 <label>Answer</label>
-                <input type="number" className='form-control' required
+                <input type="string" className='form-control' required
                 onChange={(e)=>setAnswer(e.target.value)} value={Answer}></input>
                 <br></br>
                 {/* <label>Upload Product Image</label>
