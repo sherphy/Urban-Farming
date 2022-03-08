@@ -110,3 +110,26 @@
     font-weight: 600;
     cursor: pointer;
   }
+
+  /* summary box */
+.summary-box{
+  width: 300px;
+  margin: 30px auto;
+  border: 1px solid #b9b5b5;
+  display: flex;
+  flex-direction:column;
+  padding: 30px;
+}
+
+.summary-box h3{
+  display: flex;  
+  border-bottom: 1px solid #e00a02;
+  text-align: center;
+  padding: 0px;
+}
+
+.summary-box div{
+  /* display: flex; */
+  justify-content: space-between;
+}
+
