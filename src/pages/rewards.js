@@ -119,7 +119,6 @@ import { auth, db } from '../util/firebase'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Grid from '@mui/material/Grid';
-import CartProducts from '../util/CartProducts';
 // import Card from '@mui/material/Card';
 
 toast.configure();
@@ -198,6 +197,8 @@ const Rewards = (props) => {
                 rewardProduct['qty'] = 1;
             }
                 rewardProduct['Orderedby'] = user;
+                rewardProduct['TotalProductPrice'] = rewardProduct['qty']*rewardProduct['price'];
+                console.log(rewardProduct['TotalProductPrice']);
                 db.collection('Cart ' + uid).doc(product.ID).set(rewardProduct).then(() => {
                     console.log('successfully added to cart');
                     //success notification procs even when quantity is more than 1 
@@ -225,7 +226,10 @@ const Rewards = (props) => {
                 //     draggable: false,
                 //     progress: undefined,
                 // });
-            }
+
+            //points 
+            
+        }
         else {
             props.history.push('/dashboard');
         }
@@ -307,6 +311,7 @@ const Rewards = (props) => {
     //     }
     // }
 
+    
     //frontend
     const useStyles = makeStyles((theme) => ({
         title: {
