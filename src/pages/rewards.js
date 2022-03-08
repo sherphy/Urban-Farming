@@ -227,81 +227,81 @@ const Rewards = (props) => {
         }
     }
 
-    const [cartProducts, setCartProducts]=useState([]);
+    // const [cartProducts, setCartProducts]=useState([]);
 
-    // getting cart products from firestore collection and updating the state
-    useEffect(()=>{
-        auth.onAuthStateChanged(user=>{
-            if(user){
-                db.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
-                    const newCartProduct = snapshot.docs.map((doc)=>({
-                        ID: doc.id,
-                        ...doc.data(),
-                    }));
-                    setCartProducts(newCartProduct);                    
-                })
-            }
-            else{
-                console.log('user is not signed in to retrieve cart');
-            }
-        })
-    },[])
+    // // getting cart products from firestore collection and updating the state
+    // useEffect(()=>{
+    //     auth.onAuthStateChanged(user=>{
+    //         if(user){
+    //             db.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
+    //                 const newCartProduct = snapshot.docs.map((doc)=>({
+    //                     ID: doc.id,
+    //                     ...doc.data(),
+    //                 }));
+    //                 setCartProducts(newCartProduct);                    
+    //             })
+    //         }
+    //         else{
+    //             console.log('user is not signed in to retrieve cart');
+    //         }
+    //     })
+    // },[])
 
-    // console.log(cartProducts);
+    // // console.log(cartProducts);
 
-       // getting the qty from cartProducts in a seperate array
-    //    const qty = cartProducts.map(cartProduct=>{
-    //     return cartProduct.qty;
+    //    // getting the qty from cartProducts in a seperate array
+    // //    const qty = cartProducts.map(cartProduct=>{
+    // //     return cartProduct.qty;
+    // // })
+
+    // // reducing the qty in a single value
+    // // const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
+
+    // // const totalQty = qty.reduce(reducerOfQty,0);
+
+    // // console.log(totalQty);
+
+    // // getting the TotalProductPrice from cartProducts in a seperate array
+    // const price = cartProducts.map((cartProduct)=>{
+    //     return cartProduct.TotalProductPrice;
     // })
-
-    // reducing the qty in a single value
-    // const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
-
-    // const totalQty = qty.reduce(reducerOfQty,0);
-
-    // console.log(totalQty);
-
-    // getting the TotalProductPrice from cartProducts in a seperate array
-    const price = cartProducts.map((cartProduct)=>{
-        return cartProduct.TotalProductPrice;
-    })
     
-    // cart product increase function
-    const cartProductIncrease=(cartProduct)=>{
-        // console.log(cartProduct);
-        rewardProduct=cartProduct;
-        rewardProduct.qty=rewardProduct.qty+1;
-        // updating in database
-        auth.onAuthStateChanged(user=>{
-            if(user){
-                db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
-                    console.log('increment added');
-                })
-            }
-            else{
-                console.log('user is not logged in to increment');
-            }
-        })
-    }
+    // // cart product increase function
+    // const cartProductIncrease=(cartProduct)=>{
+    //     // console.log(cartProduct);
+    //     rewardProduct=cartProduct;
+    //     rewardProduct.qty=rewardProduct.qty+1;
+    //     // updating in database
+    //     auth.onAuthStateChanged(user=>{
+    //         if(user){
+    //             db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
+    //                 console.log('increment added');
+    //             })
+    //         }
+    //         else{
+    //             console.log('user is not logged in to increment');
+    //         }
+    //     })
+    // }
 
-    // cart product decrease functionality
-    const cartProductDecrease =(cartProduct)=>{
-        rewardProduct=cartProduct;
-        if(rewardProduct.qty > 1){
-            rewardProduct.qty=rewardProduct.qty-1;
-             // updating in database
-            auth.onAuthStateChanged(user=>{
-                if(user){
-                    db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
-                        console.log('decrement');
-                    })
-                }
-                else{
-                    console.log('user is not logged in to decrement');
-                }
-            })
-        }
-    }
+    // // cart product decrease functionality
+    // const cartProductDecrease =(cartProduct)=>{
+    //     rewardProduct=cartProduct;
+    //     if(rewardProduct.qty > 1){
+    //         rewardProduct.qty=rewardProduct.qty-1;
+    //          // updating in database
+    //         auth.onAuthStateChanged(user=>{
+    //             if(user){
+    //                 db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
+    //                     console.log('decrement');
+    //                 })
+    //             }
+    //             else{
+    //                 console.log('user is not logged in to decrement');
+    //             }
+    //         })
+    //     }
+    // }
 
     //frontend
     const useStyles = makeStyles((theme) => ({
@@ -353,12 +353,12 @@ const Rewards = (props) => {
        <div>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
-         <div className='products-box'>
+         {/* <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
                             cartProductIncrease={cartProductIncrease}
                             cartProductDecrease={cartProductDecrease}
                         />
-                    </div>
+                    </div> */}
          <div class="lists">
            <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
                <Products className="item" products={products} addToCart={addToCart}/>
