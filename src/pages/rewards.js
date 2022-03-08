@@ -119,6 +119,7 @@ import { auth, db } from '../util/firebase'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Grid from '@mui/material/Grid';
+import CartProducts from '../util/CartProducts';
 // import Card from '@mui/material/Card';
 
 toast.configure();
@@ -184,15 +185,16 @@ const Rewards = (props) => {
         getProducts();
     }, [])
 
-    let Product;
+    let rewardProduct;
+
     const addToCart = (product) => {
         if (uid !== null) {
             console.log(product);
-            Product = product;
-            Product['qty'] = 1;
-            Product['Orderedby'] = user;
-            Product['TotalProductPrice'] = Product.qty * Product.price;
-            db.collection('Cart ' + uid).doc(product.ID).set(Product).then(() => {
+            rewardProduct = product;
+            rewardProduct['qty'] = 1;
+            rewardProduct['Orderedby'] = user;
+            rewardProduct['TotalProductPrice'] = rewardProduct.qty * rewardProduct.price;
+            db.collection('Cart ' + uid).doc(product.ID).set(rewardProduct).then(() => {
                 console.log('successfully added to cart');
                 //success notification procs even when quantity is more than 1 
                 //can uncomment once i find a way to increase qty from rewards itself
@@ -222,6 +224,82 @@ const Rewards = (props) => {
         }
         else {
             props.history.push('/dashboard');
+        }
+    }
+
+    const [cartProducts, setCartProducts]=useState([]);
+
+    // getting cart products from firestore collection and updating the state
+    useEffect(()=>{
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
+                    const newCartProduct = snapshot.docs.map((doc)=>({
+                        ID: doc.id,
+                        ...doc.data(),
+                    }));
+                    setCartProducts(newCartProduct);                    
+                })
+            }
+            else{
+                console.log('user is not signed in to retrieve cart');
+            }
+        })
+    },[])
+
+    // console.log(cartProducts);
+
+       // getting the qty from cartProducts in a seperate array
+    //    const qty = cartProducts.map(cartProduct=>{
+    //     return cartProduct.qty;
+    // })
+
+    // reducing the qty in a single value
+    // const reducerOfQty = (accumulator, currentValue)=>accumulator+currentValue;
+
+    // const totalQty = qty.reduce(reducerOfQty,0);
+
+    // console.log(totalQty);
+
+    // getting the TotalProductPrice from cartProducts in a seperate array
+    const price = cartProducts.map((cartProduct)=>{
+        return cartProduct.TotalProductPrice;
+    })
+    
+    // cart product increase function
+    const cartProductIncrease=(cartProduct)=>{
+        // console.log(cartProduct);
+        rewardProduct=cartProduct;
+        rewardProduct.qty=rewardProduct.qty+1;
+        // updating in database
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
+                    console.log('increment added');
+                })
+            }
+            else{
+                console.log('user is not logged in to increment');
+            }
+        })
+    }
+
+    // cart product decrease functionality
+    const cartProductDecrease =(cartProduct)=>{
+        rewardProduct=cartProduct;
+        if(rewardProduct.qty > 1){
+            rewardProduct.qty=rewardProduct.qty-1;
+             // updating in database
+            auth.onAuthStateChanged(user=>{
+                if(user){
+                    db.collection('Cart ' + user.uid).doc(cartProduct.ID).update(rewardProduct).then(()=>{
+                        console.log('decrement');
+                    })
+                }
+                else{
+                    console.log('user is not logged in to decrement');
+                }
+            })
         }
     }
 
@@ -275,6 +353,12 @@ const Rewards = (props) => {
        <div>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
+         <div className='products-box'>
+                        <CartProducts cartProducts={cartProducts}
+                            cartProductIncrease={cartProductIncrease}
+                            cartProductDecrease={cartProductDecrease}
+                        />
+                    </div>
          <div class="lists">
            <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
                <Products className="item" products={products} addToCart={addToCart}/>
