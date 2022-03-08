@@ -29,10 +29,11 @@ const Streak = () => {
     //resets at midnight, so check that
     
     let streak = 1;
+    //can i even use secondsToMidnight
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
     const streakCounter = () => {
-        if (secondsToMidnight === 0) {
+        // if (secondsToMidnight === 0) {
           if (timeSinceRefresh < 8.64e7) {
             streak += 1;
             console.log("retained streak of " + streak);
@@ -46,7 +47,7 @@ const Streak = () => {
           //must find a way to return streak first, then restart loop
           //for both, so they all reset at midnight 
           return streak;
-        } 
+        // } 
     }
     
     console.log(streakCounter());
@@ -116,10 +117,26 @@ const Streak = () => {
     //by taking the initial points + streakPoints of the day, added once
     //must add the streakPoints to existing database points
     //cannot just call uid in case blank
-      if (uid && secondsToMidnight === 0) {
+    //   if (uid && secondsToMidnight === 0) {
+
+    const DailyTimeOut = () => {
+        useEffect(() => {
+            const timer = setTimeout(() => console.log("Run once a day to update db"), 8.64e7);
+            return () => clearTimeout(timer);
+          }, []);
+    }
+
+    const updateDbPoints = () => {
+        if (uid) {
         db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
         }
+        else {
+            console.log("You are not signed in")
+        }
     console.log(finalPoints + " database points");
+    }
+
+    DailyTimeOut(updateDbPoints);
 
     return (
         <div>
