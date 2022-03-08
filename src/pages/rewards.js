@@ -191,15 +191,19 @@ const Rewards = (props) => {
         if (uid !== null) {
             console.log(product);
             rewardProduct = product;
-            rewardProduct['qty'] = 1;
-            rewardProduct['Orderedby'] = user;
-            rewardProduct['TotalProductPrice'] = rewardProduct.qty * rewardProduct.price;
-            db.collection('Cart ' + uid).doc(product.ID).set(rewardProduct).then(() => {
-                console.log('successfully added to cart');
-                //success notification procs even when quantity is more than 1 
-                //can uncomment once i find a way to increase qty from rewards itself
+            if (rewardProduct['qty'] >= 1){
+                rewardProduct['qty']++ ;
+            }
+            else {
+                rewardProduct['qty'] = 1;
+            }
+                rewardProduct['Orderedby'] = user;
+                db.collection('Cart ' + uid).doc(product.ID).set(rewardProduct).then(() => {
+                    console.log('successfully added to cart');
+                    //success notification procs even when quantity is more than 1 
+                    //can uncomment once i find a way to increase qty from rewards itself
 
-                // if (Product.qty !== 1) {
+                    // if (Product.qty !== 1) {
                     toast.success('This product has been added to your cart', {
                         position: "top-right",
                         autoClose: 2000,
@@ -209,6 +213,7 @@ const Rewards = (props) => {
                         draggable: false,
                         progress: undefined,
                     });
+                })
                 // }
 
                 // toast.warn('This product is already in your cart', {
@@ -220,8 +225,7 @@ const Rewards = (props) => {
                 //     draggable: false,
                 //     progress: undefined,
                 // });
-            })
-        }
+            }
         else {
             props.history.push('/dashboard');
         }
