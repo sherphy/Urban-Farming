@@ -123,8 +123,8 @@ const Streak = () => {
 
     return (
         <div>
-            <Typography align="center" inline variant="h5">Welcome back, {FullName}</Typography>
-            <Typography align="center" inline variant="h5">
+            <Typography align="center" inline variant="h6">Welcome back! {FullName}</Typography>
+            <Typography align="center" inline variant="h6">
                     You have a streak of: {streak}
                     {/* You have a streak of: {streak} */}
                     {/* you get x points for logging in for x consecutive days
