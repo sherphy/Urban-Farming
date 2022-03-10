@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 20px 20px 20px",
     background: "rgba(250, 243, 221, 0.85)",
     borderRadius: "10px",
-    width: '50%',
+    width: '60%',
   },
 }));
 
@@ -47,7 +47,7 @@ const Guides = () => {
         return (
           <Grid
             item
-            xs={12}
+            xs={6}
             sm={6}
             md={4}
             style={{ display: "flex", justifyContent: "center" }}
@@ -68,7 +68,7 @@ const Guides = () => {
         return (
           <Grid
             item
-            xs={12}
+            xs={6}
             sm={6}
             md={4}
             style={{ display: "flex", justifyContent: "center" }}
