@@ -99,7 +99,7 @@ class Dashboard extends React.Component{
                             <div>
                               <div class={classes.container}>
                                 {/*<p>{SignedUpUsersData.Email}</p>*/} 
-                                <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography>
+                                {/* <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography> */}
                                 {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
                                 <Streak/>
                                 {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
