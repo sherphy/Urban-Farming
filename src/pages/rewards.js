@@ -119,6 +119,7 @@ import { auth, db } from '../util/firebase'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Grid from '@mui/material/Grid';
+import {useNavigate} from 'react-router-dom';
 // import Card from '@mui/material/Card';
 
 toast.configure();
@@ -233,6 +234,12 @@ const Rewards = (props) => {
         else {
             props.history.push('/dashboard');
         }
+    }
+
+    let navigate = useNavigate();
+
+    const dashNav = () => {
+        navigate('/cart');
     }
 
     // const [cartProducts, setCartProducts]=useState([]);
@@ -378,6 +385,7 @@ const Rewards = (props) => {
       {products.length < 1 && (
         <div className='container-fluid'>Please wait....</div>
       )} 
+      <button style={{backgroundColor: "green"}} onClick={dashNav}>Click here to go to cart</button>
     </div>
     </>
 )
