@@ -120,6 +120,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Grid from '@mui/material/Grid';
 import {useNavigate} from 'react-router-dom';
+// import {userPoints} from "../util/streak"
 // import Card from '@mui/material/Card';
 
 toast.configure();
@@ -318,7 +319,27 @@ const Rewards = (props) => {
     //     }
     // }
 
-    
+    function GetCurrentUser(){
+        const [userPoints, setUserPoints]=useState('');
+
+        useEffect(()=>{
+            //this probably reloads the console
+            auth.onAuthStateChanged(user=>{
+                if(user){
+                    db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
+                        setUserPoints(snapshot.data().Points);
+                    })
+                }
+                else{
+                    setUserPoints(null);
+                }
+            })
+        },[])
+        return userPoints;
+    }
+
+    const getUserPoints = GetCurrentUser();
+
     //frontend
     const useStyles = makeStyles((theme) => ({
         title: {
@@ -369,6 +390,7 @@ const Rewards = (props) => {
        <div>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
          <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
+         <Typography inline variant="h6" align="center" className={classes.bodyText}>You have {getUserPoints} points</Typography>
          {/* <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
                             cartProductIncrease={cartProductIncrease}
