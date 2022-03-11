@@ -513,13 +513,18 @@
 import { db, auth, firebase } from "../util/firebase";
 import { useEffect, useState } from "react";
 
-useEffect(() => {
-    db.collection("Questions")
-      .orderBy("ID")
-      .onSnapshot((snapshot) => {
-        let questionSets = snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        setQuestionSets(questionSets);
-      });
-  }, []);
+const Quiz = () => {
+// useEffect(() => {
+//     db.collection("Questions")
+//       .orderBy("ID")
+//       .onSnapshot((snapshot) => {
+//         let questionSets = snapshot.docs.map((doc) => {
+//           return { id: doc.id, ...doc.data() };
+//         });
+//         setQuestionSets(questionSets);
+//       });
+//   }, []);
+// }
+}
+
+export default Quiz
