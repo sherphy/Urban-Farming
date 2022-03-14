@@ -4,6 +4,8 @@ import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
 import { toast } from 'react-toastify';
 import {useNavigate} from 'react-router-dom';
+import { makeStyles, useTheme } from "@material-ui/styles";
+import useWindowDimensions from "../util/useWindowDimensions";
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
 
@@ -204,6 +206,7 @@ const Cart = () => {
                             let data = doc.data();
                             console.log(doc.id, '=>', doc.data());
                             let setDoc = db.collection('Paid Cart ' + user.uid).doc(doc.id).set(data);
+                            //change the doc.id part to quantity part 
                             setDoc.then(res => {
                                 console.log('Set: ', res);
                             });
@@ -217,6 +220,9 @@ const Cart = () => {
                 //how to append
 
                 //how about if Cart doc.id === Paid Cart doc.id, then db.collection Paid Cart field .qty += Cart field .qty
+                //if seed item is not there, then add the whole collection
+                //but if everything is there, then edit the ID 
+                //return whole cart collection, except qty 
 
                 db.collection('Cart ' + user.uid).get()
                   .then((snapshot) => {
@@ -244,11 +250,54 @@ const Cart = () => {
     // const navDash = useNavigate('/dashboard');
     let navigate = useNavigate();
 
+    //frontend
+    const useStyles = makeStyles((theme) => ({
+        title: {
+          marginTop: 0, 
+          marginBottom: 10,
+        },
+        container: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "8px",
+          padding: "20px 20px 20px 20px",
+          background: "rgba(250, 243, 221, 0.85)",
+          borderRadius: "10px",
+        },
+        bodyText: {
+          marginTop: 10,
+          marginBottom: 10,
+        },
+      }));
+      
+
+  const { height, width } = useWindowDimensions();
+  const classes = useStyles();
+  const theme = useTheme();
+
+  let stlWidth, stlHeight;
+  let imgWidth, imgHeight;
+  let productWidth, productHeight;
+  if (width <= 960) {
+    stlWidth = 250;
+    stlHeight = 250;
+    imgWidth = 200;
+    imgHeight = 200;
+  } else {
+    stlWidth = 400;
+    stlHeight = 400;
+    imgWidth = 350;
+    imgHeight = 350;
+  }
+
+
     return (
-        <div>
+        <div className={classes.container}>
             {cartProducts.length > 0 &&
                 <div className='container-fluid'>
-                    <h1 className='text-center'>Cart</h1>
+                    <h1 className='text-center' align="center">Cart</h1>
                     <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
                             cartProductIncrease={cartProductIncrease}
@@ -256,7 +305,7 @@ const Cart = () => {
                         />
                     </div>
                     <div className='summary-box'>
-                        <h5>Cart Summary</h5>
+                        <h3>Cart Summary</h3>
                         <div>
                             Total Points Required: <span> {totalPrice} Points </span>
                         </div>
@@ -265,13 +314,15 @@ const Cart = () => {
                         </div>
                         {pointsAfterTransaction >= 0 &&
                             <div>
+                                <br></br>
+                                <div style={{color:"green"}} >
                                 You have enough points to purchase this!
-                                <div />
-                                You will have {pointsAfterTransaction} after this!
-                                {/* make it green */}
+                                </div>
+                                <div> 
+                                You will have {pointsAfterTransaction} points after this.
+                                </div>
                                 <br />
                                 <button onClick={Checkout}> Confirm order! </button>
-                                {/* need to say something on click otherwise they confused */}
                             </div>
                         }
 
