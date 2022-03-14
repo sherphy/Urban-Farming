@@ -105,7 +105,7 @@ class Dashboard extends React.Component{
                                 {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
                                 
                                 
-                                {(user.email === 'testuser2@testuser2.com' || user.email === 'testuser4@testuser4.com') &&
+                                {(user.email === '' || user.email === '') &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" alt="example cbm gif"></img>
@@ -114,7 +114,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === 'testuser1@testuser1.com' &&
+                                {user.email === '' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" alt="Example cbl gif"></img>
@@ -123,7 +123,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === 'testuser3@testuser3.com' &&
+                                {user.email === '' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" alt='example cbr gif'></img>
@@ -186,7 +186,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
                               </div>
-                                {(user.email === 'yenshihcheng@gmail.com' || user.email === 'e0324120@u.nus.edu' || user.email === 'admintest1@admintest1.com') &&
+                                {(user.email === '' || user.email === '' || user.email === '') &&
                                 <>
                                 <div class={classes.admin}>
                                   <div class="box">
