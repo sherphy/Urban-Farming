@@ -29,10 +29,11 @@ const Streak = () => {
     //resets at midnight, so check that
     
     let streak = 1;
+    //can i even use secondsToMidnight
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
     const streakCounter = () => {
-        if (secondsToMidnight === 0) {
+        // if (secondsToMidnight === 0) {
           if (timeSinceRefresh < 8.64e7) {
             streak += 1;
             console.log("retained streak of " + streak);
@@ -46,10 +47,10 @@ const Streak = () => {
           //must find a way to return streak first, then restart loop
           //for both, so they all reset at midnight 
           return streak;
-        } 
+        // } 
     }
     
-    console.log(streakCounter());
+    //console.log(streakCounter());
     console.log(secondsToMidnight + " for next reset");
     
     //for the streak points of the day    
@@ -116,22 +117,41 @@ const Streak = () => {
     //by taking the initial points + streakPoints of the day, added once
     //must add the streakPoints to existing database points
     //cannot just call uid in case blank
-      if (uid && secondsToMidnight === 0) {
+    //   if (uid && secondsToMidnight === 0) {
+
+    const DailyTimeOut = () => {
+        useEffect(() => {
+            const timer = setTimeout(() => console.log("Run once a day to update db"), 8.64e7);
+            return () => clearTimeout(timer);
+          }, []);
+    }
+
+    const updateDbPoints = () => {
+        if (uid) {
         db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
         }
+        else {
+            console.log("You are not signed in")
+        }
     console.log(finalPoints + " database points");
+    }
+
+    DailyTimeOut(updateDbPoints);
 
     return (
         <div>
-            <Typography align="center" inline variant="h6">Welcome back! {FullName}</Typography>
-            <Typography align="center" inline variant="h6">
-                    You have a streak of: {streak}
-                    {/* You have a streak of: {streak} */}
-                    {/* you get x points for logging in for x consecutive days
-                    notification style */}
-            </Typography>
-        </div>
-    );
+        <Typography align="center" inline variant="h3">Welcome back, {FullName}</Typography>
+        <Typography align="center" inline variant="h5">
+                You get {streak} point(s) for logging in for {streak} day(s)!
+                <br></br>
+                {/*You have {finalPoints} point(s) in total.*/}
+                {/* updates at midnight */}
+                {/* You have a streak of: {streak} */}
+                {/* you get x points for logging in for x consecutive days
+                notification style */}
+        </Typography>
+    </div>
+);
 }
 
 export default Streak;
