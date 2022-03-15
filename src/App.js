@@ -14,6 +14,7 @@ import Cart from "./pages/cart";
 import AddProducts from "./util/AddProducts"
 import Quiz from "./pages/quiz"
 import AddQuestions from './util/AddQuestions'
+import Video from "./pages/video"
 //might need to remove later to hide it from view
 // import AddProducts from "./components/AddProducts";
 //utilities
@@ -24,11 +25,10 @@ import './index.css'
 //Background Image
 import Background from "./images/Background2.jpg";
 //Navbar
-import WithoutNav from "./components/Layout/WithoutNav";
 import WithNav from "./components/Layout/WithNav";
 
 //testing
-import Firebasef from "./util/firebase";
+
 
 var backgroundStyle = {
   minHeight: "100vh", 
@@ -87,6 +87,7 @@ export class App extends Component {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/addquestions" element={<AddQuestions/>} />
+                <Route path="/video" element={<Video/>} />
                 {/* might need to remove later to hide it from view */}
                 {/* <Route path='/addproducts' element={<AddProducts />} /> */}
               {/*<Route path="/Firebasef" element={<Firebasef />} />*/}
