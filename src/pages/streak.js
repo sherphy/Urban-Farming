@@ -28,7 +28,7 @@ const Streak = () => {
     //if <1 day, aka 8.64e^7 milliseconds since last log, streak cont
     //resets at midnight, so check that
     
-    let streak = 1;
+    let streak = 0;
     //can i even use secondsToMidnight
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
@@ -140,16 +140,13 @@ const Streak = () => {
 
     return (
         <div>
-        <Typography align="center" inline variant="h3">Welcome back, {FullName}</Typography>
-        <Typography align="center" inline variant="h5">
-                You get {streak} point(s) for logging in for {streak} day(s)!
+        <Typography display="inline" align="center" inline variant="caption">Welcome back, {FullName} You get {streak} point(s) for logging in for {streak} day(s)!</Typography>
                 <br></br>
                 {/*You have {finalPoints} point(s) in total.*/}
                 {/* updates at midnight */}
                 {/* You have a streak of: {streak} */}
                 {/* you get x points for logging in for x consecutive days
                 notification style */}
-        </Typography>
     </div>
 );
 }
