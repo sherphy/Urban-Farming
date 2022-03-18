@@ -41,7 +41,7 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 //const database = getDatabase(app); sensor realtime database DO NOT COMMENT OUT THIS PART ELSE BANDWIDTH WILL BURST- Davinod
 
-export { auth, db, storage}
+export { auth, db, storage, firebase}
 
 //const useStyles = makeStyles((theme) => ({
 //  gridItem: {
