@@ -254,13 +254,13 @@ const Cart = () => {
         navigate('/rewards');
     }
 
-    function checkCartAlreadyExist() {
-        auth.onAuthStateChanged(user => {
-            if (db.collection('Paid Cart ' + user.uid)) {
+    // function checkCartAlreadyExist() {
+    //     auth.onAuthStateChanged(user => {
+    //         if (db.collection('Paid Cart ' + user.uid)) {
                 
-            }
-    })
-    }
+    //         }
+    // })
+    // }
 
     //frontend
     const useStyles = makeStyles((theme) => ({
