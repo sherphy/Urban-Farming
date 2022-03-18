@@ -1,134 +1,239 @@
 /* products */
 .products-box{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
-  }
-  
-  .product{
-    width: 350px;
-    height: auto; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-right: 24px;
-    transition: all 0.3s ease-in-out;
-    padding: 12px;
-    border-radius: 10px; 
-  }
-  
-  .product:hover {
-    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  @media(min-width: 768px){
-    .product{
-      width: 300px;
-    }
-  }
-  
-  .product .product-img{
-    width: 180px;
-    height: 215px;  
-  }
-  
-  .product .product-img img{
-    width: 100%;
-    height: 100%;
-  }
-  
-  .product .product-text{
-    margin-bottom: 10px;
-    font-size: 16px;
-    text-align: center;  
-  }
-  
-  .product .product-text.title{
-    color: #e00a02;  
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 10px;
-  }
-  
-  .product .product-text.description{
-    height: 50px;
-    overflow: hidden;
-  }
-  
-  .product .product-text.price{
-    font-weight: 600;
-  }
-  
-  .product .product-text.cart-price{
-    font-weight: 600;
-    color: #e00a02;
-  }
-  
-  .cart-btn{
-    /* background-color: #e00a02 !important; */
-    background-color: #e98604;
-  }
-  
-  .cart-menu-btn{
-    position: relative;  
-  }
-  
-  .cart-menu-btn .cart-indicator{
-    width: 18px;
-    background-color: #e00a02;
-    padding: 3px;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    position: absolute;
-    top: -17px;
-    right: -15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .product .quantity-box{
-    width: 100%;  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    padding: 5px;
-    border: 1px solid #b9b5b5;
-    border-radius: 8px;
-  }
-  
-  .product .quantity-box .action-btns{
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  /* summary box */
-.summary-box{
-  width: 300px;
-  margin: 30px auto;
-  border: 1px solid #b9b5b5;
+  width: 100%;
   display: flex;
-  flex-direction:column;
-  padding: 30px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.product{
+  width: 350px;
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-right: 24px;
+  transition: all 0.3s ease-in-out;
+  padding: 12px;
+  border-radius: 10px; 
+}
+
+.product:hover {
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media(min-width: 768px){
+  .product{
+    width: 300px;
+  }
+}
+
+.product .product-img{
+  width: 180px;
+  height: 215px;  
+}
+
+.product .product-img img{
+  width: 100%;
+  height: 100%;
+}
+
+.product .product-text{
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;  
+}
+
+.product .product-text.title{
+  color: #e00a02;  
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.product .product-text.description{
+  height: 50px;
+  overflow: hidden;
+}
+
+.product .product-text.price{
+  font-weight: 600;
+}
+
+.product .product-text.cart-price{
+  font-weight: 600;
+  color: #e00a02;
+}
+
+.cart-btn{
+  /* background-color: #e00a02 !important; */
+  background-color: #e98604;
+}
+
+.cart-menu-btn{
+  position: relative;  
+}
+
+.cart-menu-btn .cart-indicator{
+  width: 18px;
+  background-color: #e00a02;
+  padding: 3px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  position: absolute;
+  top: -17px;
+  right: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product .quantity-box{
+  width: 100%;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 5px;
+  border: 1px solid #b9b5b5;
+  border-radius: 8px;
+}
+
+.product .quantity-box .action-btns{
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* summary box */
+.summary-box{
+width: 300px;
+margin: 30px auto;
+border: 1px solid #b9b5b5;
+display: flex;
+flex-direction:column;
+padding: 30px;
 }
 
 .summary-box h3{
-  display: flex;  
-  border-bottom: 1px solid #e00a02;
-  text-align: center;
-  padding: 0px;
+display: flex;  
+border-bottom: 1px solid #e00a02;
+text-align: center;
+padding: 0px;
 }
 
 .summary-box div{
-  /* display: flex; */
-  justify-content: space-between;
-} 
+/* display: flex; */
+justify-content: space-between;
+}
+
+.Quiz {
+width: 100%;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.Quiz h1 {
+font-size: 50px;
+font-weight: 600;
+color: white;
+}
+
+.quiz_container {
+background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+width: 50%;
+height: 50%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
+padding: 20px;
+border-radius: 20px;
+}
+
+.quiz_container .image_container {
+width: 100%;
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.options_container {
+width: 100%;
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+margin-top: 20px;
+}
+
+.quiz_question {
+font-size: 20px;
+font-weight: 600;
+color: #fff;
+margin-top: 20px;
+}
+
+.option {
+width: 40%;
+height: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+background-color: orange;
+font-size: 20px;
+font-weight: 600;
+border-radius: 10px;
+margin-bottom: 10px;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+}
+
+.submit_btn button {
+width: 200px;
+height: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: yellow;
+color: #e00a02;
+font-size: 20px;
+font-weight: 600;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+border: none;
+outline: none;
+}
+
+.submit_btn {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+
+.incorrect_ans_message {
+color: #e00a02;
+font-size: 20px;
+}
+
+.submit_btn button:active {
+transform: scale(0.9);
+}
+
+/* hover is diff from select */
+.option:hover {
+color: white;
+background-color: green;
+}
