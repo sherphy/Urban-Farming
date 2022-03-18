@@ -92,6 +92,7 @@ import Cart from './pages/cart'
 import Guides from './pages/guides'
 import Quiz from "./pages/quiz"
 import "./index.css"
+import Video from "./pages/video"
 // import AddProducts from './util/AddProducts'
 import AddQuestions from './util/AddQuestions'
 
@@ -124,6 +125,7 @@ export class App extends Component {
           <Route path="/cart" element={<Cart />} />
           <Route path="/guides" element={<Guides />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/video" element={<Video/>} />
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
           {/* <Route path="/addquestions" element={<AddQuestions/>} /> */}
           </Route>

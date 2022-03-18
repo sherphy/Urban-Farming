@@ -96,154 +96,154 @@ class Dashboard extends React.Component{
                 {
                     this.state.SignedUpUsersData && this.state.SignedUpUsersData.slice(0,1).map(SignedUpUsersData => {
                         return(
-                            <div>
-                              <div class={classes.container}>
-                                {/*<p>{SignedUpUsersData.Email}</p>*/} 
-                                {/* <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography> */}
-                                {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
-                                <Streak/>
-                                {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
-                                
-                                
-                                {(user.email === '' || user.email === '') &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" alt="example cbm gif"></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Middle</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" alt="Example cbl gif"></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Left</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" alt='example cbr gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Right</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_left.gif?alt=media&token=d6f58cdb-72ee-456f-bf06-e128cd343dc1" alt='example cml gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Middle Left</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_middle.gif?alt=media&token=e49a244d-8dbe-43c9-89e0-93f4dafdf257" alt='example cmm gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Middle Middle</Typography>
-                                </>
-                                }
-                                
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_right.gif?alt=media&token=f7a73850-d499-49cb-87f8-7f07b1ac9194" alt='example cmr gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Middle Right</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_left.gif?alt=media&token=6e909725-fd07-4309-bfff-2683b5a3c633" alt='example ctl gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Top Left</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" alt='example ctm gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Top Middle</Typography>
-                                </>
-                                }
-
-                                {user.email === '' &&
-                                <>
-                                  <div class="box">
-                                  <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" alt='example ctr gif'></img>
-                                  </div>
-                                  <Typography inline variant="h4" className={classes.bodyText}>Camera Top Right</Typography>
-                                </>
-                                }
+                          <div>
+                          <div class={classes.container}>
+                            {/*<p>{SignedUpUsersData.Email}</p>*/} 
+                            {/*<Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography>*/} 
+                            {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
+                            <Streak/>
+                            {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
+                            
+                            
+                            {(user.email === '' || user.email === '') &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" alt="example cbm gif"></img>
                               </div>
-                                {(user.email === '' || user.email === '' || user.email === '') &&
-                                <>
-                                <div class={classes.admin}>
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_left.gif?alt=media&token=6e909725-fd07-4309-bfff-2683b5a3c633" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Left</Typography>
-                                  </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Middle</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Middle</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" alt="Example cbl gif"></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Left</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Right</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" alt='example cbr gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Bottom Right</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_left.gif?alt=media&token=d6f58cdb-72ee-456f-bf06-e128cd343dc1" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Left</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_left.gif?alt=media&token=d6f58cdb-72ee-456f-bf06-e128cd343dc1" alt='example cml gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Middle Left</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_middle.gif?alt=media&token=e49a244d-8dbe-43c9-89e0-93f4dafdf257" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Middle</Typography>
-                                  </div>
-                                
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_right.gif?alt=media&token=f7a73850-d499-49cb-87f8-7f07b1ac9194" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Right</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_middle.gif?alt=media&token=e49a244d-8dbe-43c9-89e0-93f4dafdf257" alt='example cmm gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Middle Middle</Typography>*/}
+                            </>
+                            }
+                            
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_right.gif?alt=media&token=f7a73850-d499-49cb-87f8-7f07b1ac9194" alt='example cmr gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Middle Right</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Left</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_left.gif?alt=media&token=6e909725-fd07-4309-bfff-2683b5a3c633" alt='example ctl gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Top Left</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Middle</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" alt='example ctm gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Top Middle</Typography>*/}
+                            </>
+                            }
 
-                                  <div class="box">
-                                  <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
-                                  <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Right</Typography>
-                                  </div>
+                            {user.email === '' &&
+                            <>
+                              <div class="box">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" alt='example ctr gif'></img>
+                              </div>
+                              {/*<Typography inline variant="h4" className={classes.bodyText}>Camera Top Right</Typography>*/}
+                            </>
+                            }
+                          </div>
+                            {(user.email === '' || user.email === '' || user.email === '') &&
+                            <>
+                            <div class={classes.admin}>
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_left.gif?alt=media&token=6e909725-fd07-4309-bfff-2683b5a3c633" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Left</Typography>
+                              </div>
 
-                                </div>
-                                </>
-                                }  
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Middle</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Top Right</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_left.gif?alt=media&token=d6f58cdb-72ee-456f-bf06-e128cd343dc1" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Left</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_middle.gif?alt=media&token=e49a244d-8dbe-43c9-89e0-93f4dafdf257" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Middle</Typography>
+                              </div>
+                            
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_right.gif?alt=media&token=f7a73850-d499-49cb-87f8-7f07b1ac9194" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Right</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Left</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Middle</Typography>
+                              </div>
+
+                              <div class="box">
+                              <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
+                              <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Right</Typography>
+                              </div>
+
                             </div>
-                        )
-                    })
-                }
-            </div>
-        )
-    }
+                            </>
+                            }  
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
+}
 }
 
 export default withStyles(useStyles)(Dashboard);
