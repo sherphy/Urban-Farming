@@ -407,7 +407,7 @@ const Rewards = (props) => {
       {products.length < 1 && (
         <div className='container-fluid'>Please wait....</div>
       )} 
-      <button style={{backgroundColor: "green"}} onClick={dashNav}>Click here to go to cart</button>
+      <button style={{backgroundColor: "#90EE90"}} onClick={dashNav}>Click here to go to cart</button>
     </div>
     </>
 )
