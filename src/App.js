@@ -125,7 +125,7 @@ export class App extends Component {
           <Route path="/guides" element={<Guides />} />
           <Route path="/quiz" element={<Quiz />} />
           {/* <Route path="/addproducts" element={<AddProducts/>} /> */}
-          <Route path="/addquestions" element={<AddQuestions/>} />
+          {/* <Route path="/addquestions" element={<AddQuestions/>} /> */}
           </Route>
           </Routes>
           </div>
