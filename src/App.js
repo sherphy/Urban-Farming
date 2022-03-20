@@ -105,9 +105,9 @@ import WithNav from "./components//WithNav";
 var backgroundStyle = {
   minHeight: "100vh", 
   backgroundImage: `url(${Background})`,
-  backgroundSize: "150%", 
+  backgroundSize: "100%", 
   backgroundPosition: "center",
-  backgroundRepeat: "repeat-y",
+  // backgroundRepeat: "repeat-y",
 };
 
 export class App extends Component {

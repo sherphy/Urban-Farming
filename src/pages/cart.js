@@ -256,8 +256,9 @@ const Cart = () => {
 
     // function checkCartAlreadyExist() {
     //     auth.onAuthStateChanged(user => {
-    //         if (db.collection('Paid Cart ' + user.uid)) {
-                
+    //         if (db.collection('Paid Cart ' + user.uid).doc(doc.id)
+    //         === db.collection('Cart ' + user.uid).doc(doc.id)) {
+    //             db.collection('Paid Cart ' + user.uid).doc(doc.id).qty
     //         }
     // })
     // }

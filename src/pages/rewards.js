@@ -319,7 +319,7 @@ const Rewards = (props) => {
     //     }
     // }
 
-    function GetCurrentUser(){
+    function GetCurrentUserPoints(){
         const [userPoints, setUserPoints]=useState('');
 
         useEffect(()=>{
@@ -338,7 +338,7 @@ const Rewards = (props) => {
         return userPoints;
     }
 
-    const getUserPoints = GetCurrentUser();
+    const getUserPoints = GetCurrentUserPoints();
 
     //frontend
     const useStyles = makeStyles((theme) => ({
@@ -407,7 +407,7 @@ const Rewards = (props) => {
       {products.length < 1 && (
         <div className='container-fluid'>Please wait....</div>
       )} 
-      <button style={{backgroundColor: "#90EE90"}} onClick={dashNav}>Click here to go to cart</button>
+      <button style={{backgroundColor: "offwhite"}} onClick={dashNav}>Click here to go to cart</button>
     </div>
     </>
 )

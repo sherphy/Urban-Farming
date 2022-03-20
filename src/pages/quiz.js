@@ -5,7 +5,6 @@ toast.configure();
 
 const Quiz = () => {
     const [questionSets, setQuestionSets] = useState([]);
-    // const [currentQuestion, setCurrentQuestion] = useState([]);
     const [selectedAns, setSelectedAns] = useState("");
     const [correctAnswer, setCorrectDisplay] = useState("");
     const [wrongAns, setWrongAns] = useState(false);
@@ -74,7 +73,7 @@ const Quiz = () => {
             // alert("5 Points added");
             toast.success('Correct! 5 points have been added', {
                 position: "top-right",
-                autoClose: 2000,
+                autoClose: 10000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
@@ -115,7 +114,7 @@ const Quiz = () => {
             </h1>
           ) : (
             <div className="Quiz">
-              <h1> Daily quiz to earn rewards! </h1>
+              <h1> Daily quiz to earn 5 points! </h1>
               <div className="quiz_container">
                 <h3 className="quiz_question">
                   {questionSets ? question?.Title : "Loading..."}

@@ -72,7 +72,7 @@
   
   .cart-btn{
     /* background-color: #e00a02 !important; */
-    background-color: #e98604;
+    background-color:lightgreen;
   }
   
   .cart-menu-btn{
@@ -96,7 +96,7 @@
   }
   
   .product .quantity-box{
-    width: 100%;  
+    width: 80%;  
     display: flex;
     justify-content: space-between;
     align-items: center;
