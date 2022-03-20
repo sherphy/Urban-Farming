@@ -71,15 +71,15 @@ const Quiz = () => {
           })
           // .then(() => {
           //   // alert("5 Points added");
-          //   toast.success('Correct! 5 points have been added', {
-          //       position: "top-right",
-          //       autoClose: 10000,
-          //       hideProgressBar: false,
-          //       closeOnClick: true,
-          //       pauseOnHover: false,
-          //       draggable: false,
-          //       progress: undefined,
-          //   });
+            toast.success('Correct! 5 points have been added', {
+                position: "top-right",
+                autoClose: 10000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
           // });
       }
 

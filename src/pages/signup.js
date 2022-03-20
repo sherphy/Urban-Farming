@@ -63,6 +63,9 @@
 import React, { useState } from 'react'
 import { auth, db } from '../util/firebase'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+
+toast.configure();
 
 const Signup = (props) => {
     // defining state
@@ -89,7 +92,16 @@ const Signup = (props) => {
                 setFullname('');
                 setPassword('');
                 setError('');
-                navigate("/")
+                navigate("/");
+                toast.success('Your sign up is successful! You can login now', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                  });
             }).catch(err => setError(err.message));
         }).catch(err => setError(err.message));
     }
@@ -98,7 +110,7 @@ const Signup = (props) => {
     return (
         <div className='container'>
             <br />
-            <h2>Sign up</h2>
+            <h2 style={{color: "white", textAlign: "center"}}>Sign up</h2>
             <br />
             <form autoComplete="off" className='form-group' onSubmit={signup}>
                 <label>Name</label>
@@ -117,9 +129,9 @@ const Signup = (props) => {
             </form>
             {error && <span className='error-msg'>{error}</span>}
             <br />
-            <span>
-                <Link to="/"> Already have an account? Login</Link>
-            </span>
+            <button style={{backgroundColor: "white"}}>
+                <Link to="/"> Already have an account? Login here</Link>
+            </button>
         </div>
     )
 }

@@ -22,7 +22,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Streak from '../util/streak.js'
 import Container from "@material-ui/core/Container"; //iframes
 //import Sensor from '../util/firebase'; will work on this after iframes
-
+import {Link} from 'react-router-dom'
 
 
 const useStyles = theme => ({
@@ -103,7 +103,8 @@ class Dashboard extends React.Component{
                                 {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
                                 <Streak/>
                                 {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
-                                
+                                <button styles={{backgroundColor: "offwhite"}}><Link to ="/quiz">Click here to attempt daily quiz</Link></button>
+
                                 
                                 {(user.email === 'testuser2@testuser2.com' || user.email === 'testuser4@testuser4.com') &&
                                 <>
