@@ -56,7 +56,7 @@ const Quiz = () => {
     
       useEffect(() => {
         if (question) {
-          if (question?.answeredIds.includes(auth.currentUser.uid)) {
+          if (question?.answeredIds?.includes(auth?.currentUser?.uid)) {
             setQuestionAlreadyAttempted(true);
           }
         }
@@ -69,18 +69,18 @@ const Quiz = () => {
           .update({
             Points: firebase.firestore.FieldValue.increment(5),
           })
-          .then(() => {
-            // alert("5 Points added");
-            toast.success('Correct! 5 points have been added', {
-                position: "top-right",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
-          });
+          // .then(() => {
+          //   // alert("5 Points added");
+          //   toast.success('Correct! 5 points have been added', {
+          //       position: "top-right",
+          //       autoClose: 10000,
+          //       hideProgressBar: false,
+          //       closeOnClick: true,
+          //       pauseOnHover: false,
+          //       draggable: false,
+          //       progress: undefined,
+          //   });
+          // });
       }
 
       function makeInvisibleAlreadyAnswered() {
@@ -91,11 +91,11 @@ const Quiz = () => {
               auth.currentUser.uid
             ),
           })
-        //   .then(() => {
-        //     alert(
-        //       "You've completed today's quiz, come back again tomorrow!"
-        //     );
-        //   });
+          .then(() => {
+            alert(
+              "You've completed today's quiz, come back again tomorrow!"
+            );
+          });
       }
 
       function tryAgain() {
