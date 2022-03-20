@@ -66,6 +66,7 @@
   
   .product .product-text.description{
     height: 50px;
+    font-size: 18px;
     overflow: hidden;
   }
   
@@ -81,6 +82,9 @@
   .cart-btn{
     /* background-color: #e00a02 !important; */
     background-color:lightgreen;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
   }
   
   .cart-menu-btn{
@@ -245,4 +249,17 @@
 .option:hover {
   color: white;
   background-color: green;
+}
+
+.default {
+  border-color: #e7e7e7;
+  color: black;
+  /* border: 1px solid black; */
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.default:hover {
+  background: #e7e7e7;
 }
