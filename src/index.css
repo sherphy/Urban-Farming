@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: 0px;
+}
+
 /* products */
 .products-box{
     width: 100%;
@@ -186,6 +194,7 @@
 .option {
   width: 4000%;
   height: 50px;
+  text-align: center;
   display: inline-flex;
   justify-content: center;
   align-items: center;
