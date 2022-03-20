@@ -103,7 +103,7 @@ class Dashboard extends React.Component{
                                 {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
                                 <Streak/>
                                 {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
-                                <button styles={{backgroundColor: "offwhite"}}><Link to ="/quiz">Click here to attempt daily quiz</Link></button>
+                                <button className="default"><Link to ="/quiz">Click here to attempt daily quiz</Link></button>
 
                                 
                                 {(user.email === 'testuser2@testuser2.com' || user.email === 'testuser4@testuser4.com') &&

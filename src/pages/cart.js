@@ -4,8 +4,10 @@ import {auth, db} from '../util/firebase'
 import CartProducts from '../util/CartProducts';
 import { toast } from 'react-toastify';
 import {useNavigate} from 'react-router-dom';
-import { makeStyles, useTheme } from "@material-ui/styles";
+// import cart from "../images/cart.png";
 import useWindowDimensions from "../util/useWindowDimensions";
+import { makeStyles, useTheme } from "@material-ui/styles";
+import { Typography } from "@material-ui/core";
 //if we want to monetize
 // import StripeCheckout from 'react-stripe-checkout';
 
@@ -263,7 +265,6 @@ const Cart = () => {
     // })
     // }
 
-    //frontend
     const useStyles = makeStyles((theme) => ({
         title: {
           marginTop: 0, 
@@ -294,23 +295,22 @@ const Cart = () => {
   let imgWidth, imgHeight;
   let productWidth, productHeight;
   if (width <= 960) {
-    stlWidth = 250;
-    stlHeight = 250;
-    imgWidth = 200;
-    imgHeight = 200;
+    stlWidth = 150;
+    stlHeight = 150;
+    imgWidth = 100;
+    imgHeight = 100;
   } else {
-    stlWidth = 400;
-    stlHeight = 400;
-    imgWidth = 350;
-    imgHeight = 350;
+    stlWidth = 200;
+    stlHeight = 200;
+    imgWidth = 150;
+    imgHeight = 150;
   }
-
-
     return (
         <div className={classes.container}>
             {cartProducts.length > 0 &&
-                <div className='container-fluid'>
-                    <h1 className='text-center' align="center">Cart</h1>
+                <div>
+                         {/* <img src={cart} alt="Logo" style={{ height: imgHeight, width: imgWidth }}/> */}
+                    <Typography inline variant="h3" align="center" className={classes.bodyText}>Cart</Typography>
                     <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
                             cartProductIncrease={cartProductIncrease}
@@ -335,12 +335,13 @@ const Cart = () => {
                                 You will have {pointsAfterTransaction} points after this.
                                 </div>
                                 <br />
-                                <button onClick={Checkout}> Confirm order! </button>
+                                <button className="default" onClick={Checkout}> Confirm order! </button>
                             </div>
                         }
 
                         {pointsAfterTransaction < 0 &&
-                            <div>
+                            <div style={{color:"red"}}>
+                                <br/>
                                 You do not have enough points to get this.
                                 <br />
                                 You need {-pointsAfterTransaction} more points!

@@ -203,13 +203,9 @@ const Rewards = (props) => {
                 console.log(rewardProduct['TotalProductPrice']);
                 db.collection('Cart ' + uid).doc(product.ID).set(rewardProduct).then(() => {
                     console.log('successfully added to cart');
-                    //success notification procs even when quantity is more than 1 
-                    //can uncomment once i find a way to increase qty from rewards itself
-
-                    // if (Product.qty !== 1) {
                     toast.success('This product has been added to your cart', {
                         position: "top-right",
-                        autoClose: 2000,
+                        autoClose: 4000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: false,
@@ -391,12 +387,6 @@ const Rewards = (props) => {
          <Typography inline variant="h3" align="center" className={classes.bodyText}>Rewards</Typography>
          <Typography inline variant="h5" align="center" className={classes.bodyText}>Redeem your points for real life items here!</Typography>
          <Typography inline variant="h6" align="center" className={classes.bodyText}>You have {getUserPoints} points</Typography>
-         {/* <div className='products-box'>
-                        <CartProducts cartProducts={cartProducts}
-                            cartProductIncrease={cartProductIncrease}
-                            cartProductDecrease={cartProductDecrease}
-                        />
-                    </div> */}
          <div class="lists">
            <Grid container spacing={1} direction="row" justifyContent="space-evenly" alignItems="center">
                <Products className="item" products={products} addToCart={addToCart}/>
