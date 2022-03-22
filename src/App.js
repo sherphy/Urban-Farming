@@ -33,9 +33,9 @@ import WithNav from "./components/Layout/WithNav";
 var backgroundStyle = {
   minHeight: "100vh", 
   backgroundImage: `url(${Background})`,
-  backgroundSize: "150%", 
+  backgroundSize: "100%", 
   backgroundPosition: "center",
-  backgroundRepeat: "repeat-y",
+  //backgroundRepeat: "repeat-y",
 };
 
 //for routing 
@@ -87,7 +87,6 @@ export class App extends Component {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/quiz" element={<Quiz />} />
                 {/* <Route path="/addquestions" element={<AddQuestions/>} /> */}
-                <Route path="/video" element={<Video/>} />
                 {/* might need to remove later to hide it from view */}
                 {/* <Route path='/addproducts' element={<AddProducts />} /> */}
               {/*<Route path="/Firebasef" element={<Firebasef />} />*/}

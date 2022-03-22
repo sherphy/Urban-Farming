@@ -5,7 +5,6 @@ toast.configure();
 
 const Quiz = () => {
     const [questionSets, setQuestionSets] = useState([]);
-    // const [currentQuestion, setCurrentQuestion] = useState([]);
     const [selectedAns, setSelectedAns] = useState("");
     const [correctAnswer, setCorrectDisplay] = useState("");
     const [wrongAns, setWrongAns] = useState(false);
@@ -57,7 +56,7 @@ const Quiz = () => {
     
       useEffect(() => {
         if (question) {
-          if (question?.answeredIds.includes(auth.currentUser.uid)) {
+          if (question?.answeredIds?.includes(auth?.currentUser?.uid)) {
             setQuestionAlreadyAttempted(true);
           }
         }
@@ -70,18 +69,18 @@ const Quiz = () => {
           .update({
             Points: firebase.firestore.FieldValue.increment(5),
           })
-          .then(() => {
-            // alert("5 Points added");
-            toast.success('Correct! 5 points have been added', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
-          });
+          // .then(() => {
+          //   // alert("5 Points added");
+          toast.success('Correct! 5 points have been added', {
+            position: "top-right",
+            autoClose: 10000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+        });
+          // });
       }
 
       function makeInvisibleAlreadyAnswered() {
@@ -92,11 +91,11 @@ const Quiz = () => {
               auth.currentUser.uid
             ),
           })
-        //   .then(() => {
-        //     alert(
-        //       "You've completed today's quiz, come back again tomorrow!"
-        //     );
-        //   });
+          .then(() => {
+            alert(
+              "You've completed today's quiz, come back again tomorrow!"
+            );
+          });
       }
 
       function tryAgain() {
@@ -115,7 +114,7 @@ const Quiz = () => {
             </h1>
           ) : (
             <div className="Quiz">
-              <h1> Daily quiz to earn rewards! </h1>
+              <h1> Daily quiz to earn 5 points! </h1>
               <div className="quiz_container">
                 <h3 className="quiz_question">
                   {questionSets ? question?.Title : "Loading..."}

@@ -39,6 +39,12 @@ const Guides = () => {
 
   return (
     <Grid container spacing={2} justify="space-evenly" className={classes.container}>
+        <Grid container justify="space-between"> 
+        <Typography inline variant="h4" align="center">Video</Typography>
+        <div class="vcontainer">
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/g3vxeEamWzQ?" frameborder="0"></iframe>
+        </div>  
+        </Grid>
         <Grid container justify="space-between">  
         <Typography inline variant="h4" align="center">Plants</Typography>
         </Grid> {/*added on 31/12/21*/}
@@ -79,7 +85,7 @@ const Guides = () => {
       })}
       
   <Grid container justify="space-between">  
-  <Typography inline variant="h5" align="left">Have a recipe or information you would like to share? Let us know!</Typography>
+  <Typography inline variant="h5" align="left">Have a recipe or information you would like to share? Let us know on Whatsapp!</Typography>
   </Grid> {/*added on 4/1/22*/}
 
     </Grid>

@@ -1,3 +1,4 @@
+//SHIFTED TO guides.js
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme} from "@material-ui/styles";

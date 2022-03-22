@@ -11,7 +11,7 @@
 //for user database
 // import firebase from "../util/firebase";
 // import React, { useState } from "react";
-import React,{ useEffect } from 'react'
+import React,{ useEffect, useState } from 'react'
 import { db,auth} from '../util/firebase'
 import Typography from "@material-ui/core/Typography";
 import "./dashboard.css"
@@ -19,10 +19,11 @@ import firebase from 'firebase/compat/app';
 import "firebase/auth";
 import { makeStyles, useTheme } from "@material-ui/styles";
 import withStyles from '@material-ui/core/styles/withStyles';
+import Button from '@mui/material/Button';
 import Streak from './streak.js'
 import Container from "@material-ui/core/Container"; //iframes
 //import Sensor from '../util/firebase'; will work on this after iframes
-
+import {Link} from 'react-router-dom'
 
 
 const useStyles = theme => ({
@@ -98,14 +99,15 @@ class Dashboard extends React.Component{
                         return(
                             <div>
                               <div class={classes.container}>
-                                {/*<p>{SignedUpUsersData.Email}</p>*/} 
+                                {/*<p>{SignedUpUsersData.FullName}</p>*/}
                                 {/*<Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Timelapse</Typography>*/} 
                                 {/*<Typography inline variant="h6" className={classes.bodyText}>current user: {user.email} </Typography>*/}
+                                <Typography align="center" inline variant="h5">Welcome back, {user.email}</Typography>
                                 <Streak/>
                                 {/*<Typography inline variant="h5" className={classes.bodyText}>Sensor Data</Typography>*/}
+                                <Button variant="contained" component={Link} to="/quiz">Click here to attempt daily quiz</Button>
                                 
-                                
-                                {(user.email === '' || user.email === '') &&
+                                {(user.email === 'testuser2@testuser2.com' || user.email === 'testuser4@testuser4.com') &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_middle.gif?alt=media&token=f6fad9b3-7f57-460b-8b47-d385f75a65ed" alt="example cbm gif"></img>
@@ -123,7 +125,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {user.email === 'testuser3@testuser3.com' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" alt='example cbr gif'></img>
@@ -132,7 +134,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {user.email === 'iosonolatte@gmail.com' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_left.gif?alt=media&token=d6f58cdb-72ee-456f-bf06-e128cd343dc1" alt='example cml gif'></img>
@@ -141,7 +143,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {user.email === 'whchee2000@yahoo.com.sg' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_middle.gif?alt=media&token=e49a244d-8dbe-43c9-89e0-93f4dafdf257" alt='example cmm gif'></img>
@@ -150,7 +152,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
                                 
-                                {user.email === '' &&
+                                {user.email === 'whchee2000@yahoo.com.sg' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/middle_right.gif?alt=media&token=f7a73850-d499-49cb-87f8-7f07b1ac9194" alt='example cmr gif'></img>
@@ -159,7 +161,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {user.email === 'susan_yaoyl@yahoo.com.sg' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_left.gif?alt=media&token=6e909725-fd07-4309-bfff-2683b5a3c633" alt='example ctl gif'></img>
@@ -168,7 +170,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {(user.email === 'yenshihcheng@gmail.com'|| user.email === 'iswaladagothic@yahoo.com' ) &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" alt='example ctm gif'></img>
@@ -177,7 +179,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {(user.email === 'sweechye@hotmail.com' || user.email === 'testuser1@testuser1.com') &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" alt='example ctr gif'></img>
@@ -186,7 +188,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
                               </div>
-                                {(user.email === '' || user.email === '' || user.email === '') &&
+                                {(user.email === 'admintest1@admintest1.com') &&
                                 <>
                                 <div class={classes.admin}>
                                   <div class="box">

@@ -319,7 +319,7 @@ const Rewards = (props) => {
     //     }
     // }
 
-    function GetCurrentUser(){
+    function GetCurrentUserPoints(){
         const [userPoints, setUserPoints]=useState('');
 
         useEffect(()=>{
@@ -338,7 +338,7 @@ const Rewards = (props) => {
         return userPoints;
     }
 
-    const getUserPoints = GetCurrentUser();
+    const getUserPoints = GetCurrentUserPoints();
 
     //frontend
     const useStyles = makeStyles((theme) => ({
@@ -371,15 +371,15 @@ const Rewards = (props) => {
   let imgWidth, imgHeight;
   let productWidth, productHeight;
   if (width <= 960) {
-    stlWidth = 250;
-    stlHeight = 250;
-    imgWidth = 200;
-    imgHeight = 200;
+    stlWidth = 150;
+    stlHeight = 150;
+    imgWidth = 100;
+    imgHeight = 100;
   } else {
-    stlWidth = 400;
-    stlHeight = 400;
-    imgWidth = 350;
-    imgHeight = 350;
+    stlWidth = 200;
+    stlHeight = 200;
+    imgWidth = 150;
+    imgHeight = 150;
   }
 
   return (
@@ -388,8 +388,8 @@ const Rewards = (props) => {
      <img src={shop} alt="Logo" style={{ height: imgHeight, width: imgWidth }}/>
      {products.length > 0 && (
        <div>
-         <Typography inline variant="h4" align="center" className={classes.bodyText}>Rewards</Typography>
-         <Typography inline variant="h4" align="center" className={classes.bodyText}>Redeem real life items here!</Typography>
+         <Typography inline variant="h3" align="center" className={classes.bodyText}>Rewards</Typography>
+         <Typography inline variant="h5" align="center" className={classes.bodyText}>Redeem your points for real life items here!</Typography>
          <Typography inline variant="h6" align="center" className={classes.bodyText}>You have {getUserPoints} points</Typography>
          {/* <div className='products-box'>
                         <CartProducts cartProducts={cartProducts}
@@ -407,7 +407,7 @@ const Rewards = (props) => {
       {products.length < 1 && (
         <div className='container-fluid'>Please wait....</div>
       )} 
-      <button style={{backgroundColor: "green"}} onClick={dashNav}>Click here to go to cart</button>
+      <button className="default" onClick={dashNav}>Click here to go to cart</button>
     </div>
     </>
 )

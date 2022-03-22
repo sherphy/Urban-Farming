@@ -1,5 +1,4 @@
 import React from 'react'
-import './IndividualProduct.css'
 
 const IndividualProduct = ({individualProduct, addToCart}) => {
     const handleAddToCart=()=>{

@@ -20,7 +20,7 @@ const Login = () => {
       // console.log(email, password);
       auth.setPersistence('local');
       auth.signInWithEmailAndPassword(email,password).then(()=>{
-          setSuccessMsg('Login Successfull. You will now automatically get redirected to Home page');
+        setSuccessMsg('Login Successful. You will now automatically get redirected to Home page');
           setEmail('');
           setPassword('');
           setErrorMsg('');

@@ -42,8 +42,8 @@ const IndividualCartProduct = ({cartProduct,cartProductIncrease,cartProductDecre
                     <Icon icon={plus} size={20}/>
                 </div>
             </div>
-            <div className='product-text cart-price'>{cartProduct.TotalProductPrice} Points</div>
-            <button className='cart-btn' onClick={handleCartProductDelete} >DELETE</button>            
+            <div className='product-text cart-price'>{cartProduct.TotalProductPrice} Total Points</div>
+            <button className='cart-btn' onClick={handleCartProductDelete} >DELETE</button>             
         </div>
     )
 }

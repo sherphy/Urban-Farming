@@ -250,6 +250,19 @@ const Cart = () => {
     // const navDash = useNavigate('/dashboard');
     let navigate = useNavigate();
 
+    const dashNav = () => {
+        navigate('/rewards');
+    }
+
+    // function checkCartAlreadyExist() {
+    //     auth.onAuthStateChanged(user => {
+    //         if (db.collection('Paid Cart ' + user.uid).doc(doc.id)
+    //         === db.collection('Cart ' + user.uid).doc(doc.id)) {
+    //             db.collection('Paid Cart ' + user.uid).doc(doc.id).qty
+    //         }
+    // })
+    // }
+
     //frontend
     const useStyles = makeStyles((theme) => ({
         title: {
@@ -335,6 +348,7 @@ const Cart = () => {
                             </div>
                         }
                     </div>
+                    {/* <button style={{backgroundColor: "green"}} onClick={dashNav}>Click here to go to rewards</button> */}
                 </div>
             }
 
