@@ -28,7 +28,7 @@ const Streak = () => {
     //if <1 day, aka 8.64e^7 milliseconds since last log, streak cont
     //resets at midnight, so check that
     
-    let streak = 1;
+    let streak = 0;
     //can i even use secondsToMidnight
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
@@ -59,7 +59,7 @@ const Streak = () => {
     //caps off at 5 streaks
     var streakPoints = 1;
 
-    streakCounter();
+    streak = streakCounter();
     const getStreakPoints = () => {
         if (streak < 5) {
             streakPoints = streak;

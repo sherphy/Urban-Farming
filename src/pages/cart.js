@@ -349,7 +349,7 @@ const Cart = () => {
                             </div>
                         }
                     </div>
-                    {/* <button style={{backgroundColor: "green"}} onClick={dashNav}>Click here to go to rewards</button> */}
+                    <button className='default' onClick={dashNav}>Click here to go to rewards</button>
                 </div>
             }
 
