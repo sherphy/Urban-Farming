@@ -28,8 +28,7 @@ const Streak = () => {
     //if <1 day, aka 8.64e^7 milliseconds since last log, streak cont
     //resets at midnight, so check that
     
-    let streak = 0;
-    //can i even use secondsToMidnight
+    let streak = 1;
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
     const streakCounter = () => {
@@ -59,7 +58,10 @@ const Streak = () => {
     //caps off at 5 streaks
     var streakPoints = 1;
 
-    streak = streakCounter();
+    // if (REFRESHES DAILY) {
+    streak = setInterval(streakCounter(),8.64e7);
+    // }
+
     const getStreakPoints = () => {
         if (streak < 5) {
             streakPoints = streak;
@@ -126,17 +128,17 @@ const Streak = () => {
     // }
 
     const updateDbPoints = () => {
-        if (uid) {
-        db.collection('SignedUpUsersData').doc(userid).update({Points: finalPoints});
+            if (uid) {
+                db.collection('SignedUpUsersData').doc(userid).update({ Points: finalPoints });
+            }
+            else {
+                console.log("You are not signed in")
+            }
         }
-        else {
-            console.log("You are not signed in")
-        }
-    }
 
     setInterval(updateDbPoints(),8.64e7);
     // DailyTimeOut(updateDbPoints);
-    // updateDbPoints();
+    // updateDbPoints(); REFRESH DAILY
     console.log(finalPoints + " database points");
 
     return (
