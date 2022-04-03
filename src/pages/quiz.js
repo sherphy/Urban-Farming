@@ -91,11 +91,11 @@ const Quiz = () => {
               auth.currentUser.uid
             ),
           })
-          .then(() => {
-            alert(
-              "You've completed today's quiz, come back again tomorrow!"
-            );
-          });
+          // .then(() => {
+          //   alert(
+          //     "You've completed today's quiz, come back again tomorrow!"
+          //   );
+          // });
       }
 
       function tryAgain() {

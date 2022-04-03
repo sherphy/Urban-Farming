@@ -97,8 +97,6 @@ const Login = () => {
             <br></br>
             <h1>Login</h1>
             <hr></hr>
-            {/* redirect when authorised */}
-            {/* still debugging */}
             {auth.currentUser&& <>
                 {navigate('/dashboard')}
             </>}

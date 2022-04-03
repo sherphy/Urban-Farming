@@ -93,7 +93,7 @@ import Guides from './pages/guides'
 import Quiz from "./pages/quiz"
 import "./index.css"
 import Video from "./pages/video"
-// import AddProducts from './util/AddProducts'
+import AddProducts from './util/AddProducts'
 import AddQuestions from './util/AddQuestions'
 
 //for styling

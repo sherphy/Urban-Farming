@@ -110,7 +110,7 @@ const Signup = (props) => {
     return (
         <div className='container'>
             <br />
-            <h2 style={{color: "white", textAlign: "center"}}>Sign up</h2>
+            <h2 style={{color: "black", textAlign: "center"}}>Sign up</h2>
             <br />
             <form autoComplete="off" className='form-group' onSubmit={signup}>
                 <label>Name</label>

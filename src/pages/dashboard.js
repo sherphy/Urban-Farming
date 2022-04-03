@@ -196,7 +196,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
                               </div>
-                                {(user.email === 'admintest1@admintest1.com') &&
+                                {(user.email === 'yenshihcheng@gmail.com') &&
                                 <>
                                 <div class={classes.admin}>
                                   <div class="box">
