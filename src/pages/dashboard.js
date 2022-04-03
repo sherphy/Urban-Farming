@@ -56,14 +56,15 @@ const useStyles = theme => ({
         marginBottom: 10,
       },
       admin: {
-        display: "inline-block",
+        display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        margin: "8px",
+        margin: "auto",
         padding: "20px 20px 20px 20px",
         background: "rgba(250, 243, 221, 0.85)",
         borderRadius: "10px",
+        width: '40%',
       }
   });
 
@@ -116,7 +117,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {user.email === '' &&
+                                {user.email === 'testuser2@testuser2.com' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" alt="Example cbl gif"></img>
@@ -170,7 +171,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {(user.email === 'yenshihcheng@gmail.com'|| user.email === 'iswaladagothic@yahoo.com' ) &&
+                                {(user.email === 'yenshihcheng@gmail.com'|| user.email === 'iswaladagothic@yahoo.com' || user.email === 'testuser1@testuser1.com') &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_middle.gif?alt=media&token=d7c37234-a6e6-4b12-8d1f-701d4fbbf885" alt='example ctm gif'></img>
@@ -179,7 +180,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
 
-                                {(user.email === 'sweechye@hotmail.com' || user.email === 'testuser1@testuser1.com') &&
+                                {user.email === 'sweechye@hotmail.com' &&
                                 <>
                                   <div class="box">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/top_right.gif?alt=media&token=94f9d81c-fbcf-4693-b197-f6a2343b5d90" alt='example ctr gif'></img>
@@ -188,7 +189,7 @@ class Dashboard extends React.Component{
                                 </>
                                 }
                               </div>
-                                {(user.email === 'admintest1@admintest1.com') &&
+                                {(user.email === 'admintest1@admintest1.com' || user.email === 'yenshihcheng@gmail.com') &&
                                 <>
                                 <div class={classes.admin}>
                                   <div class="box">
@@ -221,7 +222,7 @@ class Dashboard extends React.Component{
                                   <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Middle Right</Typography>
                                   </div>
 
-                                  <div class="box">
+                                  {/*<div class="box">
                                   <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_left.gif?alt=media&token=b610efd0-929d-4e52-88c8-d0773ad6e134" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
                                   <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Left</Typography>
                                   </div>
@@ -234,7 +235,7 @@ class Dashboard extends React.Component{
                                   <div class="box">
                                   <iframe src="https://firebasestorage.googleapis.com/v0/b/eg4301-urban-farming.appspot.com/o/bottom_right.gif?alt=media&token=ca1ac792-7c37-4b59-9ceb-ff913ff79ec4" frameborder="0" scrolling="no" width="432" height="768" align="left"></iframe>
                                   <Typography align="center" variant="h4" fontWeight="fontWeightBold" className={classes.title}>Camera Bottom Right</Typography>
-                                  </div>
+                                  </div>*/}
 
                                 </div>
                                 </>
