@@ -40,10 +40,13 @@ const Guides = () => {
   return (
     <Grid container spacing={2} justify="space-evenly" className={classes.container}>
         <Grid container justify="space-between"> 
-        <Typography inline variant="h4" align="center">Video</Typography>
+        <Typography inline variant="h4" align="center">Videos</Typography>
         <div class="vcontainer">
-            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/g3vxeEamWzQ?" frameborder="0"></iframe>
-        </div>  
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/g3vxeEamWzQ?" frameborder="0" allowFullScreen="allowFullScreen"></iframe>
+        </div>
+        <div class="vcontainer">
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/yAVcBORenH4" frameborder="0" allowFullScreen="allowFullScreen"></iframe>
+        </div>    
         </Grid>
         <Grid container justify="space-between">  
         <Typography inline variant="h4" align="center">Plants</Typography>
