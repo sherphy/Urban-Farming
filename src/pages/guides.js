@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import PlantWikiCard from "../components/PlantWikiCard";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme } from "@material-ui/styles";
+import { makeStyles, useTheme} from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,8 +38,16 @@ const Guides = () => {
   ]; //added on 27/12/21 & added a recipe on 12/1/22
 
   return (
-   
     <Grid container spacing={2} justify="space-evenly" className={classes.container}>
+        <Grid container justify="space-between"> 
+        <Typography inline variant="h4" align="center">Videos</Typography>
+        <div class="vcontainer">
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/g3vxeEamWzQ?" frameborder="0" allowFullScreen="allowFullScreen"></iframe>
+        </div>
+        <div class="vcontainer">
+            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/yAVcBORenH4" frameborder="0" allowFullScreen="allowFullScreen"></iframe>
+        </div>    
+        </Grid>
         <Grid container justify="space-between">  
         <Typography inline variant="h4" align="center">Plants</Typography>
         </Grid> {/*added on 31/12/21*/}
