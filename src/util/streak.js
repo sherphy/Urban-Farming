@@ -28,7 +28,7 @@ const Streak = () => {
     //if <1 day, aka 8.64e^7 milliseconds since last log, streak cont
     //resets at midnight, so check that
     
-    let streak = 1;
+    let streak = 0;
     var secondsToMidnight = moment("24:00:00", "hh:mm:ss").diff(moment(), 'seconds');
 
     const streakCounter = () => {
@@ -58,7 +58,7 @@ const Streak = () => {
     //caps off at 5 streaks
     var streakPoints = 1;
 
-    // if (REFRESHES DAILY) {
+    // if (secondsToMidnight === 0) {
     streak = setInterval(streakCounter(),8.64e7);
     // }
 
@@ -86,8 +86,6 @@ const Streak = () => {
                     db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot=>{
                         setUserPoints(snapshot.data().Points);
                         setFullName(snapshot.data().FullName);
-                        // setEmail(snapshot.data().Email);
-                        // setCamera(snapshot.data().Camera);
                         setUid(user.uid);
                     })
                 }
@@ -99,12 +97,8 @@ const Streak = () => {
         return userPoints;
     }
     const userPoints = GetCurrentUser();
-    //to copy other relevant fields over for user data to update
     //otherwise the whole object must update
     const [FullName, setFullName] = useState('');
-    // const [Email, setEmail] = useState('');
-    // const [Camera, setCamera] = useState('');
-    
     const [uid, setUid] = useState('');
     const userid = uid;
     console.log(userid + " user id")
@@ -120,12 +114,12 @@ const Streak = () => {
     //cannot just call uid in case blank
     //   if (uid && secondsToMidnight === 0) {
 
-    // const DailyTimeOut = () => {
-    //     useEffect(() => {
-    //         const timer = setTimeout(() => console.log("Run once a day to update db"), 5000);
-    //         return () => clearTimeout(timer);
-    //       }, []);
-    // }
+    const DailyTimeOut = () => {
+        useEffect(() => {
+            const timer = setTimeout(() => console.log("Run once a day to update db"), 8.64e7);
+            return () => clearTimeout(timer);
+          }, []);
+    }
 
     const updateDbPoints = () => {
             if (uid) {
@@ -136,8 +130,8 @@ const Streak = () => {
             }
         }
 
-    setInterval(updateDbPoints(),8.64e7);
-    // DailyTimeOut(updateDbPoints);
+    // setInterval(updateDbPoints(),8.64e7);
+    DailyTimeOut(updateDbPoints);
     // updateDbPoints(); REFRESH DAILY
     console.log(finalPoints + " database points");
 
@@ -145,7 +139,7 @@ const Streak = () => {
         <div>
         <Typography align="center" inline variant="h5">Welcome back, {FullName}</Typography>
         <Typography align="center" inline variant="h6">
-                You get {streak} point(s) for logging in for {streak} day(s)!
+                You get {streakPoints} point(s) for logging in for {streakPoints} day(s)!
                 <br></br>
                 {/* You have {finalPoints} point(s) in total. */}
                 {/* updates at midnight */}
